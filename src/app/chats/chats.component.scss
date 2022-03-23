@@ -1,0 +1,19 @@
+.main_container {
+    height: 100vh;
+    background-color: #22272e;
+    color: white;
+    padding: 0 16px;
+    position: relative;
+}
+
+.textArea_container {
+    position: absolute;
+    bottom: 16px;
+    right: 16px;
+    left: 16px;
+    textarea {
+        width: 100%;
+        background-color: #22272e;
+        color: white;
+    }
+}

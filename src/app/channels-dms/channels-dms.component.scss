@@ -1,0 +1,18 @@
+.main_container {
+    width: 300px;
+    height: 100vh;
+    border-right: 1px solid black;
+    background-color: #22272e;
+    color: white;
+    padding-left: 16px;
+
+    mat-tree {
+        background-color: #22272e;
+        button {
+            background-color: #22272e;
+        }
+        mat-tree-node {
+            color: white;
+        }
+    }
+}
