@@ -13,7 +13,7 @@ export class ChatsComponent implements OnInit {
 
   userChat: string[] = [];
 
-  user: Users = new Users;
+  user = new Users();
 
 
 
