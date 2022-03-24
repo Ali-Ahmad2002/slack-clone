@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Users } from 'src/models/users';
 
 @Component({
   selector: 'app-chats',
@@ -7,9 +8,36 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ChatsComponent implements OnInit {
 
+  @ViewChild('text')
+  text!: ElementRef;
+
+  userChat: string[] = [];
+
+  user: Users = new Users;
+
+
+
+
+
   constructor() { }
 
   ngOnInit(): void {
+
+    console.log('User', this.user)
+  }
+
+
+  
+
+  showtext(text:string){
+    
+    this.user.users_chat = text
+    this.userChat.push(this.user.users_chat);
+    this.text.nativeElement.value = '';
+    
+   
+    
+
   }
 
 }
