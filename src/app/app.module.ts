@@ -3,6 +3,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import {MatTreeModule} from '@angular/material/tree';
 import {MatIconModule} from '@angular/material/icon';
 import {MatDialogModule} from '@angular/material/dialog';
+import {CdkTreeModule} from '@angular/cdk/tree';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatFormFieldModule, } from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -11,6 +15,8 @@ import { ChannelsDmsComponent } from './channels-dms/channels-dms.component';
 import { ChatsComponent } from './chats/chats.component';
 import { ThreadsComponent } from './threads/threads.component';
 import { AddChannelOverlayComponent } from './add-channel-overlay/add-channel-overlay.component';
+
+
 
 @NgModule({
   declarations: [
@@ -26,7 +32,14 @@ import { AddChannelOverlayComponent } from './add-channel-overlay/add-channel-ov
     BrowserAnimationsModule,
     MatTreeModule,
     MatIconModule,
-    MatDialogModule
+    MatDialogModule,
+    CdkTreeModule,
+    MatCheckboxModule,
+    MatFormFieldModule,
+    MatInputModule
+   
+    
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
