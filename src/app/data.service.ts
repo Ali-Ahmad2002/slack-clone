@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AddChannelOverlayComponent } from './add-channel-overlay/add-channel-overlay.component';
-import { ChannelsDmsComponent } from './channels-dms/channels-dms.component';
+import { Users } from 'src/models/users';
 
 
 @Injectable({
@@ -9,8 +8,11 @@ import { ChannelsDmsComponent } from './channels-dms/channels-dms.component';
 export class DataService {
 
 
-  newChanells:any = ['Angular'];
-  activ: boolean = false;
+  newChanels:any = ['Allgemein'];
+  userChat:any = [];
+  active: boolean = false;
+  user = new Users();
+  
   
  
 
@@ -19,8 +21,26 @@ export class DataService {
 
 
   
-  
+  save() {
+    let savedChannel = JSON.stringify(this.newChanels);
+    let userChat = JSON.stringify(this.user.users_chat);
+    localStorage.setItem('channel', savedChannel);
+    localStorage.setItem('chat', userChat);
+  }
+
+  load() {
+    let loadedChannel: any = localStorage.getItem('channel');
+    let loadedChat: any = localStorage.getItem('chat');
+    if (loadedChannel && loadedChat) {
+      this.newChanels = JSON.parse(loadedChannel);
+      this.userChat = JSON.parse(loadedChat);
+    } else {
+      console.log('TEST');
+    }
+  }
+
+  }
   
 
 
-}
+

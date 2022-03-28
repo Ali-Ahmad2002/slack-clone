@@ -8,13 +8,13 @@ import { DataService } from '../data.service';
   selector: 'app-chats',
   templateUrl: './chats.component.html',
   styleUrls: ['./chats.component.scss'],
-  
+
 })
 export class ChatsComponent implements OnInit {
 
 
-  @Input() name: any; 
- 
+  @Input() name: any;
+
 
   @ViewChild('text')
   text!: ElementRef;
@@ -24,24 +24,24 @@ export class ChatsComponent implements OnInit {
   user = new Users();
 
 
-  constructor( public data: DataService  ) { }
+  constructor(public data: DataService) { }
 
   ngOnInit(): void {
-    
+
+    this.data.load();
     console.log('Data', this.data);
-    
+
     console.log('User', this.user)
   }
 
 
-  
 
-  showtext(text:string){
-    
-    this.user.users_chat = text
-    this.userChat.push(this.user.users_chat);
+
+  showtext(text: string) {
+    this.user.users_chat = text;
+    this.data.userChat.push(this.user.users_chat);
     this.text.nativeElement.value = '';
-    
+    this.data.save();
   }
 
 }

@@ -33,7 +33,7 @@ export class ChannelsDmsComponent implements OnInit {
 
 
   ngOnInit(): void {
-     
+     this.data.load();
   }
 
    
@@ -47,31 +47,32 @@ export class ChannelsDmsComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result:any) => {
       console.log('The dialog was closed', result);
       if(result && result.length > 0){
-        this.data.newChanells.push(result);
-        console.log('funktiion',this.data.newChanells);
-    
+        this.data.newChanels.push(result);
+        console.log('funktiion',this.data.newChanels);
+        this.data.save();
       }     
     });
   
   }  
 
-  filterdProjects = this.data.newChanells;
+  filterdProjects = this.data.newChanels;
  
   
   newChanelIndex(newChanel: any){
     console.log('newChanel ',newChanel);
     
-    if ( newChanel !== 'Angular') {
+    if ( newChanel !== '') {
       console.log('log filter',this.filterdProjects);
       
-      this.filterdProjects = this.data.newChanells.filter(
+      this.filterdProjects = this.data.newChanels.filter(
         (p: { newChanel: any; }) => p === newChanel );
         console.log(this.filterdProjects);
         
         
     } else {
-     this.filterdProjects = this.data.newChanells;
+     this.filterdProjects = this.data.newChanels;
     }
+   
   }   
  
       
