@@ -19,29 +19,47 @@ export class ChatsComponent implements OnInit {
   @ViewChild('text')
   text!: ElementRef;
 
-  userChat: string[] = [];
+  userChat: any = [];
 
   user = new Users();
+
 
 
   constructor(public data: DataService) { }
 
   ngOnInit(): void {
 
-    this.data.load();
+    this.load();
     console.log('Data', this.data);
 
-    console.log('User', this.user)
+    console.log('User', this.user);
   }
 
 
 
-
-  showtext(text: string) {
+  value = '';
+  showtext() {
+    this.user.users_chat.push(this.value);
+    
     // this.user.users_chat = text;
-    this.userChat.push(text);
-    this.text.nativeElement.value = '';
-    this.data.save();
+    // this.userChat.push(text);
+    // this.text.nativeElement.value = '';
+    this.save();
+    // this.value = "";
+  }
+
+  save() {
+    let userChat = JSON.stringify(this.user.users_chat);
+    localStorage.setItem('chat', userChat);
+  }
+
+  load() {
+    let loadedChat: any = localStorage.getItem('chat');
+    if (loadedChat) {
+      this.userChat = JSON.parse(loadedChat);
+    } else {
+      console.log('TEST');
+    }
   }
 
 }

@@ -3,7 +3,7 @@ export class Users {
     public users: string[] = [];
     public users_images: string[] = [];
     public users_id: number = 0;
-    public users_chat: string = '';
+    public users_chat:any = [];
 
 
 

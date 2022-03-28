@@ -9,7 +9,7 @@ export class DataService {
 
 
   newChanels:any = ['Allgemein'];
-  userChat:any = [];
+  // userChat:any = [];
   active: boolean = false;
   user = new Users();
   
@@ -33,7 +33,7 @@ export class DataService {
     let loadedChat: any = localStorage.getItem('chat');
     if (loadedChannel && loadedChat) {
       this.newChanels = JSON.parse(loadedChannel);
-      this.userChat = JSON.parse(loadedChat);
+      // this.userChat = JSON.parse(loadedChat);
     } else {
       console.log('TEST');
     }
