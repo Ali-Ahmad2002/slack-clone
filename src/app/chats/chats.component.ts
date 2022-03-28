@@ -16,8 +16,9 @@ export class ChatsComponent implements OnInit {
   @Input() name: any;
 
 
-  @ViewChild('text')
   text!: ElementRef;
+
+  areaValue: any;
 
   userChat: string[] = [];
 
@@ -38,10 +39,11 @@ export class ChatsComponent implements OnInit {
 
 
   showtext(text: string) {
-    this.user.users_chat = text;
-    this.data.userChat.push(this.user.users_chat);
-    this.text.nativeElement.value = '';
-    this.data.save();
+    // this.user.users_chat = text;
+    // this.data.userChat.push(this.user.users_chat);
+    // // this.text.nativeElement.value = '';
+    // this.data.save();
+    console.log('text', text)
   }
 
 }
