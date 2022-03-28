@@ -38,8 +38,8 @@ export class ChatsComponent implements OnInit {
 
 
   showtext(text: string) {
-    this.user.users_chat = text;
-    this.data.userChat.push(this.user.users_chat);
+    // this.user.users_chat = text;
+    this.userChat.push(text);
     this.text.nativeElement.value = '';
     this.data.save();
   }
