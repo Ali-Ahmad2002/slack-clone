@@ -1,14 +1,16 @@
 <div class="main_container">
-    <h1>Channel erstellen</h1>
 
-    <span>Channels dienen deinem Team zur Kommunikation. Am besten sollten sie themenbezogen sein <br> – #marketing zum
-        Beispiel.</span>
-
-    <div class="input_container">
-        <input type="text" placeholder="channel Name" #channelName>
-        <div class="btn_container">
-            <button (click)="createChannelName(channelName.value)" (click)="channelName.value=''">Erstellen</button>
-        </div>
+    <h1 mat-dialog-title>Hi Halo Name vom Nutzer</h1>
+    <div mat-dialog-content>
+        <p>Channels dienen deinem Team zur Kommunikation. Am besten sollten sie themenbezogen sein</p>
+        <mat-form-field appearance="fill">
+            <mat-label>Channel Name</mat-label>
+            <input matInput [(ngModel)]="name">
+        </mat-form-field>
+    </div>
+    <div mat-dialog-actions>
+        <button mat-button (click)="onNoClick()">No Thanks</button>
+        <button mat-button [disabled]="name.length == 0" [mat-dialog-close]="name" cdkFocusInitial>Ok</button>
     </div>
 
 

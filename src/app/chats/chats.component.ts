@@ -1,12 +1,20 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Injectable, Input, OnInit, ViewChild } from '@angular/core';
 import { Users } from 'src/models/users';
+import { DataService } from '../data.service';
+
+
 
 @Component({
   selector: 'app-chats',
   templateUrl: './chats.component.html',
-  styleUrls: ['./chats.component.scss']
+  styleUrls: ['./chats.component.scss'],
+  
 })
 export class ChatsComponent implements OnInit {
+
+
+  @Input() name: any; 
+ 
 
   @ViewChild('text')
   text!: ElementRef;
@@ -16,13 +24,12 @@ export class ChatsComponent implements OnInit {
   user = new Users();
 
 
-
-
-
-  constructor() { }
+  constructor( public data: DataService  ) { }
 
   ngOnInit(): void {
-
+    
+    console.log('Data', this.data);
+    
     console.log('User', this.user)
   }
 
@@ -35,9 +42,6 @@ export class ChatsComponent implements OnInit {
     this.userChat.push(this.user.users_chat);
     this.text.nativeElement.value = '';
     
-   
-    
-
   }
 
 }

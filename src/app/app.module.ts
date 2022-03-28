@@ -7,6 +7,10 @@ import {CdkTreeModule} from '@angular/cdk/tree';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatFormFieldModule, } from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
+import { FormsModule } from '@angular/forms';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
+
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -36,10 +40,10 @@ import { AddChannelOverlayComponent } from './add-channel-overlay/add-channel-ov
     CdkTreeModule,
     MatCheckboxModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    FormsModule,
+    MatButtonToggleModule
    
-    
-    
   ],
   providers: [],
   bootstrap: [AppComponent]

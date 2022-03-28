@@ -5,7 +5,6 @@
     background-color: #22272e;
     color: white;
     padding: 0 16px;
-
     mat-tree {
         background-color: #22272e;
         button {
@@ -24,4 +23,9 @@
     button {
         cursor: pointer;
     }
+}
+
+.test {
+    display: flex;
+    justify-content: space-between;
 }
