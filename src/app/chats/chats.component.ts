@@ -26,8 +26,6 @@ export class ChatsComponent implements OnInit {
   constructor(public data: DataService) { }
 
   ngOnInit(): void {
-
-    this.data.load();
     console.log('Data', this.data);
 
     console.log('User', this.user);
@@ -40,7 +38,6 @@ export class ChatsComponent implements OnInit {
 
     console.log('NAMECHAT', chatName)
     this.chats.chats.push(this.message);
-    this.data.save();
     this.message = "";
   }
 

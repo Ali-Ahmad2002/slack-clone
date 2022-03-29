@@ -34,7 +34,7 @@ export class ChannelsDmsComponent implements OnInit {
 
 
   ngOnInit(): void {
-     this.data.load();
+     
   }
 
    
@@ -45,15 +45,13 @@ export class ChannelsDmsComponent implements OnInit {
   openDialog(): void {
     const dialogRef = this.dialog.open(AddChannelOverlayComponent);
 
-    dialogRef.afterClosed().subscribe((result:any) => {
-      console.log('The dialog was closed', result);
-      if(result && result.length > 0){
-        this.chats.chats_name.push(result);
+    dialogRef.afterClosed().subscribe((channelName:any) => {
+      console.log('The dialog was closed', channelName);
+      if(channelName && channelName.length > 0){
+        this.chats.chats_name.push(channelName);
         console.log('funktiion',this.chats.chats_name);
-        this.data.save();
-      }     
+      }  
     });
-  
   }  
 
   filterdProjects = this.chats.chats_name;
@@ -67,6 +65,7 @@ export class ChannelsDmsComponent implements OnInit {
       
       this.filterdProjects = this.chats.chats_name.filter(
         (p: { newChanel: any; }) => p === newChanel );
+        
         console.log(this.filterdProjects);
         
         
