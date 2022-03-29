@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Chats } from 'src/models/chat';
 import { Users } from 'src/models/users';
 import { DataService } from '../data.service';
 
@@ -17,7 +18,8 @@ export class ChatsComponent implements OnInit {
 
 
   user = new Users();
-  message!:any;
+  chats = new Chats();
+  message!: any;
 
 
 
@@ -33,12 +35,14 @@ export class ChatsComponent implements OnInit {
 
 
 
-  
-  showtext() {
 
-    this.data.userChat.push(this.message);
+  showtext(chatName: any) {
+
+    console.log('NAMECHAT', chatName)
+    this.chats.chats.push(this.message);
     this.data.save();
     this.message = "";
   }
+
 
 }

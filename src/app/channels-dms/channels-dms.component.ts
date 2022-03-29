@@ -7,6 +7,7 @@ import { MatTreeFlatDataSource, MatTreeFlattener } from '@angular/material/tree'
 import { BehaviorSubject } from 'rxjs';
 import { AddChannelOverlayComponent } from '../add-channel-overlay/add-channel-overlay.component';
 import { DataService } from '../data.service';
+import { Chats } from 'src/models/chat';
 
 
 
@@ -25,7 +26,7 @@ import { DataService } from '../data.service';
 
 export class ChannelsDmsComponent implements OnInit {
   
-
+  chats = new Chats();
  
   constructor(public dialog: MatDialog, public data: DataService ) {
   }
@@ -47,30 +48,30 @@ export class ChannelsDmsComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result:any) => {
       console.log('The dialog was closed', result);
       if(result && result.length > 0){
-        this.data.newChanels.push(result);
-        console.log('funktiion',this.data.newChanels);
+        this.chats.chats_name.push(result);
+        console.log('funktiion',this.chats.chats_name);
         this.data.save();
       }     
     });
   
   }  
 
-  filterdProjects = this.data.newChanels;
+  filterdProjects = this.chats.chats_name;
  
   
-  newChanelIndex(newChanel: any, index:any){
-    console.log('newChanel ',newChanel, index);
+  newChanelIndex(newChanel: any){
+    console.log('newChanel ',newChanel);
     
     if ( newChanel !== '') {
       console.log('log filter',this.filterdProjects);
       
-      this.filterdProjects = this.data.newChanels.filter(
+      this.filterdProjects = this.chats.chats_name.filter(
         (p: { newChanel: any; }) => p === newChanel );
         console.log(this.filterdProjects);
         
         
     } else {
-     this.filterdProjects = this.data.newChanels;
+     this.filterdProjects = this.chats.chats_name;
     }
    
   }   

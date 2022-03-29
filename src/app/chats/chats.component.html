@@ -4,21 +4,22 @@
         <span>{{ nameChat }} </span>
 
 
-        <h1>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi, repudiandae, ratione vel numquam dolores, quae minus natus tempore quos quisquam non corrupti eum adipisci! Aspernatur iste optio odit similique vero!
+        <h1>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi, repudiandae, ratione vel numquam dolores,
+            quae minus natus tempore quos quisquam non corrupti eum adipisci! Aspernatur iste optio odit similique vero!
         </h1>
 
         <div>
-            <p *ngFor="let chat of data.userChat">
+            <p *ngFor="let chat of chats.chats">
                 {{ chat }}
             </p>
-
         </div>
 
 
 
         <div class="textArea_container">
-            <textarea (keyup.enter)="showtext()" placeholder="Write message" id="text" cols="15" rows="5" type="text" name="message" [(ngModel)]="message"></textarea>
-            <!-- <button (click)="showtext(text.value)">Send ICON</button> -->
+            <textarea (keyup.enter)="showtext(nameChat)" placeholder="Write message" id="text" cols="15" rows="5" type="text"
+                name="message" [(ngModel)]="message"></textarea>
+            <!-- <button (click)="showNameChat(nameChat)">Send ICON</button> -->
         </div>
 
     </div>
