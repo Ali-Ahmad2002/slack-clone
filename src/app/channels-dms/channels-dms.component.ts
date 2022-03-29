@@ -58,8 +58,8 @@ export class ChannelsDmsComponent implements OnInit {
   filterdProjects = this.data.newChanels;
  
   
-  newChanelIndex(newChanel: any){
-    console.log('newChanel ',newChanel);
+  newChanelIndex(newChanel: any, index:any){
+    console.log('newChanel ',newChanel, index);
     
     if ( newChanel !== '') {
       console.log('log filter',this.filterdProjects);

@@ -8,7 +8,7 @@
             <button (click)="openDialog()">+</button>
         </div>
         <div *ngFor="let newChanel of data.newChanels ; let i = index">
-            <mat-button-toggle (click)="newChanelIndex(newChanel)"> #{{ newChanel }} </mat-button-toggle>
+            <mat-button-toggle (click)="newChanelIndex(newChanel,i)"> #{{ newChanel }} </mat-button-toggle>
 
         </div>
 
@@ -18,7 +18,7 @@
 
     <div>
 
-        <app-chats class="chat_component_container" *ngFor="let newFilter of filterdProjects; let i = index" [name]="newFilter"></app-chats>
+        <app-chats class="chat_component_container" *ngFor="let newFilter of filterdProjects; let i = index" [nameChat]="newFilter"></app-chats>
     </div>
 
 

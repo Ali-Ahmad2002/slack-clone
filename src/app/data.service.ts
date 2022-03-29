@@ -9,7 +9,7 @@ export class DataService {
 
 
   newChanels:any = ['Allgemein'];
-  // userChat:any = [];
+  userChat:any = [];
   active: boolean = false;
   user = new Users();
   
@@ -23,17 +23,17 @@ export class DataService {
   
   save() {
     let savedChannel = JSON.stringify(this.newChanels);
-    let userChat = JSON.stringify(this.user.users_chat);
+    let userChat = JSON.stringify(this.userChat);
     localStorage.setItem('channel', savedChannel);
     localStorage.setItem('chat', userChat);
   }
 
   load() {
     let loadedChannel: any = localStorage.getItem('channel');
-    let loadedChat: any = localStorage.getItem('chat');
+     let loadedChat: any = localStorage.getItem('chat');
     if (loadedChannel && loadedChat) {
       this.newChanels = JSON.parse(loadedChannel);
-      // this.userChat = JSON.parse(loadedChat);
+     this.userChat = JSON.parse(loadedChat);
     } else {
       console.log('TEST');
     }

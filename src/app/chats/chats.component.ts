@@ -1,4 +1,4 @@
-import { Component, ElementRef, Injectable, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Users } from 'src/models/users';
 import { DataService } from '../data.service';
 
@@ -13,15 +13,11 @@ import { DataService } from '../data.service';
 export class ChatsComponent implements OnInit {
 
 
-  @Input() name: any;
+  @Input() nameChat: any;
 
-
-  @ViewChild('text')
-  text!: ElementRef;
-
-  userChat: any = [];
 
   user = new Users();
+  message!:any;
 
 
 
@@ -29,7 +25,7 @@ export class ChatsComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.load();
+    this.data.load();
     console.log('Data', this.data);
 
     console.log('User', this.user);
@@ -37,29 +33,12 @@ export class ChatsComponent implements OnInit {
 
 
 
-  value = '';
+  
   showtext() {
-    this.user.users_chat.push(this.value);
-    
-    // this.user.users_chat = text;
-    // this.userChat.push(text);
-    // this.text.nativeElement.value = '';
-    this.save();
-    // this.value = "";
-  }
 
-  save() {
-    let userChat = JSON.stringify(this.user.users_chat);
-    localStorage.setItem('chat', userChat);
-  }
-
-  load() {
-    let loadedChat: any = localStorage.getItem('chat');
-    if (loadedChat) {
-      this.userChat = JSON.parse(loadedChat);
-    } else {
-      console.log('TEST');
-    }
+    this.data.userChat.push(this.message);
+    this.data.save();
+    this.message = "";
   }
 
 }
