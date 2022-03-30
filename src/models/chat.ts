@@ -1,23 +1,24 @@
-export class Chats {
-
-    public chats: any[] = [
-        {
-            id: 0,
-            name:  'Ang'
-        }
-    ];
-    public chats_name: any[] = [];
-    public chats_id: any = []
 
 
+export class Chat {
 
+    public name!: string;
+    public id! : string;
+    public message!: string;
+    public imgUrl! : string;
+
+    public timeStamp!: number;
+    public creator! : string; //User ID From FIRESTORE COLLECTION USERS
+
+
+    constructor(obj : any){
+        this.name = obj.name;
+    }
 
 
     public toJson() {
         return {
-            chats: this.chats,
-            chats_name: this.chats_name,
-            chats_id: this.chats_id,
+           name : this.name
         };
     }
 

@@ -6,9 +6,6 @@ export class Users {
     public users_chat:any = [];
 
 
-
-
-
     public toJson() {
         return {
             users: this.users,
@@ -19,4 +16,25 @@ export class Users {
         };
     }
 
+}
+
+export class User {
+
+    public name: string[] = [];
+    public users_id: number = 0;
+
+
+   a
+    public toJson() {
+        return {
+           
+        };
+    }
+
+}
+
+export class Message{
+    public text!: string;
+    public author!: string; //USER ID FROM FIRESTORE COLLECTION USERS
+    public chatId!: string; //CHAT ID FROM  FIRESTORE COLLECTION CHATS
 }
