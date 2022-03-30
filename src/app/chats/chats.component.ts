@@ -48,9 +48,12 @@ export class ChatsComponent implements OnInit {
 
 
   showtext(message: any) {
-
+    let test = {
+      id: this.chatId,
+      name: message
+    }
     console.log('NAMECHAT', message);
-    this.chats.chats.push(this.message);
+    this.chats.chats.push(test);
     console.log('CHATS', this.chats.chats);
     this.message = "";
   }

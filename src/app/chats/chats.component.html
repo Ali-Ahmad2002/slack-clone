@@ -17,8 +17,9 @@
 
 
         <div>
-            <p>
-                {{this.chats.chats }}
+            <p *ngFor="let chat of chats.chats">
+                <span>{{ chat.id }}</span>
+                {{ chat.name }}
             </p>
         </div>
 

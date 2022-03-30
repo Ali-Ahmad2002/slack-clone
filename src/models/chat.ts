@@ -1,6 +1,11 @@
 export class Chats {
 
-    public chats: any[] = [];
+    public chats: any[] = [
+        {
+            id: 0,
+            name:  'Ang'
+        }
+    ];
     public chats_name: any[] = [];
     public chats_id: any = []
 
