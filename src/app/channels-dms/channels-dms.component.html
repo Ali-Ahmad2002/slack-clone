@@ -8,14 +8,14 @@
             <button (click)="openDialog()">+</button>
         </div>
         <div *ngFor="let newChanel of chats.chats_name ; let i = index">
-            <mat-button-toggle [routerLink]="'chats/' +i" (click)="newChanelIndex(newChanel)"> #{{ newChanel }} </mat-button-toggle>
+            <button [routerLink]="'chats/' + i"> #{{ newChanel }} </button>
 
         </div>
     </div>
 
     <div>
 
-      <router-outlet></router-outlet>
+        <router-outlet></router-outlet>
     </div>
 
 

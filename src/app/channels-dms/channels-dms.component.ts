@@ -54,24 +54,24 @@ export class ChannelsDmsComponent implements OnInit {
     });
   }  
 
-  filterdProjects = this.chats.chats_name;
+  // filterdProjects = this.chats.chats_name;
  
   
-  newChanelIndex(newChanel: any){
-    console.log('newChanel ',newChanel);
+  // newChanelIndex(newChanel: any){
+  //   console.log('newChanel ',newChanel);
     
-    if ( newChanel !== '') {
-      console.log('log filter',this.filterdProjects);
+  // //   if ( newChanel !== '') {
+  // //     console.log('log filter',this.filterdProjects);
       
-      this.filterdProjects = this.chats.chats_name.filter(
-        (p: { newChanel: any; }) => p === newChanel );
+  // //     this.filterdProjects = this.chats.chats_name.filter(
+  // //       (p: { newChanel: any; }) => p === newChanel );
         
-        console.log(this.filterdProjects);
+  // //       console.log(this.filterdProjects);
         
         
-    } else {
-     this.filterdProjects = this.chats.chats_name;
-    }
+  // //   } else {
+  // //    this.filterdProjects = this.chats.chats_name;
+  //  }
    
   }   
  
@@ -81,7 +81,7 @@ export class ChannelsDmsComponent implements OnInit {
 
    
     
-  }
+  
 
 
 

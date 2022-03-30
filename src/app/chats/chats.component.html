@@ -1,24 +1,30 @@
 <div class="main_container">
 
     <div>
-        <span>{{ nameChat }} </span>
 
 
-        <h1>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi, repudiandae, ratione vel numquam dolores,
-            quae minus natus tempore quos quisquam non corrupti eum adipisci! Aspernatur iste optio odit similique vero!
+
+        <span>{{ this.chats }} </span>
+
+
+
+
+        <h1>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi, repudiandae, ratione vel numquam dolores, quae minus natus tempore quos quisquam non corrupti eum adipisci! Aspernatur iste optio odit similique vero!
         </h1>
 
+
+
+
         <div>
-            <p *ngFor="let chat of chats.chats">
-                {{ chat }}
+            <p>
+                {{this.chats }}
             </p>
         </div>
 
 
 
         <div class="textArea_container">
-            <textarea (keyup.enter)="showtext(nameChat)" placeholder="Write message" id="text" cols="15" rows="5" type="text"
-                name="message" [(ngModel)]="message"></textarea>
+            <textarea (keyup.enter)="showtext(nameChat)" placeholder="Write message" id="text" cols="15" rows="5" type="text" name="message" [(ngModel)]="message"></textarea>
             <!-- <button (click)="showNameChat(nameChat)">Send ICON</button> -->
         </div>
 

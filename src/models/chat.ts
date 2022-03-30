@@ -2,7 +2,13 @@ export class Chats {
 
     public chats: any[] = [];
     public chats_name: any[] = [];
-    public chats_id: number = 0;
+    public chats_id: any []= [
+        {
+            id: 0,
+            chaa: 'Test'
+            
+        }
+    ]
 
 
 
