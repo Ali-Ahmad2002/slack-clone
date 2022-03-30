@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Chats } from 'src/models/chat';
-import { Users } from 'src/models/users';
+import { Chat } from 'src/models/chat';
+import { User } from 'src/models/user';
 
 
 @Injectable({
@@ -9,11 +9,11 @@ import { Users } from 'src/models/users';
 export class DataService {
 
 
-  chats = new Chats();
+  chats = new Chat(Object);
   newChanels: any = ['Allgemein'];
   userChat: any = [];
   active: boolean = false;
-  user = new Users();
+  user = new User();
 
 
 

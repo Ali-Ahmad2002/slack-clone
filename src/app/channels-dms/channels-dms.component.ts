@@ -7,7 +7,7 @@ import { MatTreeFlatDataSource, MatTreeFlattener } from '@angular/material/tree'
 import { BehaviorSubject } from 'rxjs';
 import { AddChannelOverlayComponent } from '../add-channel-overlay/add-channel-overlay.component';
 import { DataService } from '../data.service';
-import { Chats } from 'src/models/chat';
+import { Chat } from 'src/models/chat';
 
 
 
@@ -25,63 +25,35 @@ import { Chats } from 'src/models/chat';
 
 
 export class ChannelsDmsComponent implements OnInit {
-  
-  chats = new Chats();
- 
-  constructor(public dialog: MatDialog, public data: DataService ) {
+
+  chats = new Chat(Object.name);
+
+  constructor(public dialog: MatDialog, public data: DataService) {
   }
 
 
 
   ngOnInit(): void {
-     
+    console.log('chatOBJ', this.chats)
   }
 
-   
- 
+
+
   // dialog: any;
-  
+
 
   openDialog(): void {
     const dialogRef = this.dialog.open(AddChannelOverlayComponent);
 
-    dialogRef.afterClosed().subscribe((channelName:any) => {
+    dialogRef.afterClosed().subscribe((channelName: any) => {
       console.log('The dialog was closed', channelName);
-      if(channelName && channelName.length > 0){
-        this.chats.chats_name.push(channelName);
-        console.log('funktiion',this.chats.chats_name);
-      }  
+      if (channelName && channelName.length > 0) {
+        this.chats.name = channelName;
+        console.log('funktiion', this.chats.name);
+      }
     });
-  }  
-
-  // filterdProjects = this.chats.chats_name;
- 
-  
-  // newChanelIndex(newChanel: any){
-  //   console.log('newChanel ',newChanel);
-    
-  // //   if ( newChanel !== '') {
-  // //     console.log('log filter',this.filterdProjects);
-      
-  // //     this.filterdProjects = this.chats.chats_name.filter(
-  // //       (p: { newChanel: any; }) => p === newChanel );
-        
-  // //       console.log(this.filterdProjects);
-        
-        
-  // //   } else {
-  // //    this.filterdProjects = this.chats.chats_name;
-  //  }
-   
-  }   
- 
-      
-    
-    
-
-   
-    
-  
+  }
 
 
 
+}
