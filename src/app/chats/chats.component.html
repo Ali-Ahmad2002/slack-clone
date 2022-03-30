@@ -4,12 +4,13 @@
 
 
 
-        <span>{{ this.chats }} </span>
+        <span>{{ this.chats.chats_id }} </span>
 
 
 
 
-        <h1>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi, repudiandae, ratione vel numquam dolores, quae minus natus tempore quos quisquam non corrupti eum adipisci! Aspernatur iste optio odit similique vero!
+        <h1>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi, repudiandae, ratione vel numquam dolores,
+            quae minus natus tempore quos quisquam non corrupti eum adipisci! Aspernatur iste optio odit similique vero!
         </h1>
 
 
@@ -17,14 +18,15 @@
 
         <div>
             <p>
-                {{this.chats }}
+                {{this.chats.chats }}
             </p>
         </div>
 
 
 
         <div class="textArea_container">
-            <textarea (keyup.enter)="showtext(nameChat)" placeholder="Write message" id="text" cols="15" rows="5" type="text" name="message" [(ngModel)]="message"></textarea>
+            <textarea (keyup.enter)="showtext(message)" placeholder="Write message" id="text" cols="15" rows="5"
+                type="text" name="message" [(ngModel)]="message"></textarea>
             <!-- <button (click)="showNameChat(nameChat)">Send ICON</button> -->
         </div>
 

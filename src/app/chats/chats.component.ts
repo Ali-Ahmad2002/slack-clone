@@ -21,7 +21,7 @@ export class ChatsComponent implements OnInit {
   user = new Users();
   chats = new Chats();
   message!: any;
-  chatId!:any;
+  chatId!: any;
 
 
 
@@ -30,15 +30,15 @@ export class ChatsComponent implements OnInit {
   ngOnInit(): void {
 
 
-    console.log('chaaaa',this.chats);
-    
-    this.router.paramMap.subscribe( paramMap => {
-      
-       this.chats.chats_id[0].chaa = paramMap.get('id');
-       console.log('chatid',this.chats.chats_id);
-      
-    
-  })
+    console.log('chaaaa', this.chats);
+
+    this.router.paramMap.subscribe(paramMap => {
+
+      this.chats.chats_id = paramMap.get('id');
+      console.log('chatid', this.chats.chats_id);
+
+
+    })
     console.log('Data', this.data);
 
     console.log('User', this.user);
@@ -47,10 +47,11 @@ export class ChatsComponent implements OnInit {
 
 
 
-  showtext(chatName: any) {
+  showtext(message: any) {
 
-    console.log('NAMECHAT', chatName)
+    console.log('NAMECHAT', message);
     this.chats.chats.push(this.message);
+    console.log('CHATS', this.chats.chats);
     this.message = "";
   }
 
