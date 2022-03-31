@@ -32,7 +32,6 @@ export class ChannelsDmsComponent implements OnInit {
   }
 
 
-
   ngOnInit(): void {
     console.log('chatOBJ', this.chats)
   }

@@ -7,8 +7,8 @@
             <h2>Channels</h2>
             <button (click)="openDialog()">+</button>
         </div>
-        <div *ngFor="let channelName of chats.name; let i=index">
-            <button [routerLink]="'chats/' + i"> #{{ channelName }} </button>
+        <div>
+            <button [routerLink]="'chats/' + chats.name"> #{{ chats.name }} </button>
 
         </div>
     </div>
