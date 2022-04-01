@@ -1,9 +1,15 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+
 import { ActivatedRoute, Router } from '@angular/router';
 import { Chat } from 'src/models/chat';
 import { Message } from 'src/models/message';
 import { User } from 'src/models/user';
 import { DataService } from '../data.service';
+
+
+
+
 
 
 
@@ -18,59 +24,80 @@ export class ChatsComponent implements OnInit {
 
   @Input() nameChat: any;
 
+  userid: any = '';
 
   user = new User();
-  chats = new Chat(Object);
+  
   message!: any;
   chatId!: any;
-  chat!: Chat;
-  messegase: Message[] = [];
 
+  
+  
+  dataSource!:any;
+  
 
-  constructor(public router: ActivatedRoute, public data: DataService) { }
+  chat = new Chat();
+ 
+
+  constructor(public router: ActivatedRoute, public data: DataService, public  firestore: AngularFirestore) { }
 
   ngOnInit(): void {
+    this.newChats();
+
+   this.router.paramMap.subscribe(paramMap => {
+       this.chat.id = paramMap.get('id');
+      console.log('ChatId', this.chat.id);
 
 
-    console.log('chaaaa', this.router);
-
-    this.router.paramMap.subscribe(paramMap => {
-      this.chatId = paramMap.get('id');
-
-      // this.fs.collection('chats').doc(this.chatId).subscribe((chatasjson: any) => {
-      //   this.chat = new Chat(chatasjson);
-      // });
-
-      // this.fs.collection('messages', ref => ref.where('chatId', '==', this.chatId)).valueChanges({ idField: "customId" }).subscribe(messages => {
-      //   messages.forEach(m => {
-      //     this.messegase.push(new Message(m));
-      //   })
-      // })
-
-
+      this.firestore
+    .collection('chats')
+    .doc(this.chatId)
+    
+    .valueChanges()
+    .subscribe((result:any) => {
+        console.log('UPDate',result);
+      
     })
-    console.log('Data', this.data);
+      
+   });
 
-    console.log('User', this.user);
+    
+
+  //   this.router.paramMap.subscribe(paramMap => {
+  //     this.chatId = paramMap.get('id');
+
+  //     // this.fs.collection('chats').doc(this.chatId).subscribe((chatasjson: any) => {
+  //     //   this.chat = new Chat(chatasjson);
+  //     // });
+
+  //     // this.fs.collection('messages', ref => ref.where('chatId', '==', this.chatId)).valueChanges({ idField: "customId" }).subscribe(messages => {
+  //     //   messages.forEach(m => {
+  //     //     this.messegase.push(new Message(m));
+  //     //   })
+  //     // })
+  //   })
+ 
 
 
+  } 
 
-
+  newChats(){
+    this.chat = new Chat();
   }
 
+  showtext(){
 
+    
+   
 
-
-  showtext() {
-
-    console.log('NAMECHAT', this.message);
-    // this.chats.message.push(this.message);
-    // console.log('CHATS', this.chats.chats);
-
-    console.log('chatName', this.chats.message);
-    this.message = "";
-
+     this.chat.message.push(this.message)
+    this.firestore
+     .collection('chats')
+     .add(this.chat.toJson())
+   
+   this.message  = ''
   }
+
 
 
 }

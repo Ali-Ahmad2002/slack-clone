@@ -4,7 +4,7 @@
 
 
 
-        <span>{{ this.chats.id }} </span>
+        <span *ngFor="let title of data.nameChanel"> {{ title }} </span>
 
 
 
@@ -14,13 +14,17 @@
 
 
 
+        <ul>
+            <li>
+                {{this.chat.id }}
+            </li>
+        </ul>
 
-        <div>
-            <p *ngFor="let messeage of this.chats.message; let i = index">
-                {{ messeage }}
-            </p>
-        </div>
-
+        <ul>
+            <li *ngFor="let chat of chat.message">
+                {{this.chat }}
+            </li>
+        </ul>
 
 
         <div class="textArea_container">

@@ -19,12 +19,15 @@ import { ChannelsDmsComponent } from './channels-dms/channels-dms.component';
 import { ChatsComponent } from './chats/chats.component';
 import { ThreadsComponent } from './threads/threads.component';
 import { AddChannelOverlayComponent } from './add-channel-overlay/add-channel-overlay.component';
-import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { FirebaseAppModule, initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { AngularFireModule } from '@angular/fire/compat';
-import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore'
+
+ 
+
 
 
 
@@ -49,9 +52,16 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
     MatInputModule,
     FormsModule,
     MatButtonToggleModule,
+    AngularFireModule.initializeApp(environment.firebase),
     AngularFireModule,
     AngularFirestoreModule,
-    AngularFireModule.initializeApp(environment.firebase),
+    FirebaseAppModule,
+  
+ 
+
+   
+  
+  
    
   ],
   providers: [],

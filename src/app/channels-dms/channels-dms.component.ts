@@ -8,6 +8,9 @@ import { BehaviorSubject } from 'rxjs';
 import { AddChannelOverlayComponent } from '../add-channel-overlay/add-channel-overlay.component';
 import { DataService } from '../data.service';
 import { Chat } from 'src/models/chat';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { Router } from '@angular/router';
+import { User } from 'src/models/user';
 
 
 
@@ -26,9 +29,10 @@ import { Chat } from 'src/models/chat';
 
 export class ChannelsDmsComponent implements OnInit {
 
-  chats = new Chat(Object.name);
+  chats = new Chat();
+ 
 
-  constructor(public dialog: MatDialog, public data: DataService) {
+  constructor(public dialog: MatDialog,  public data: DataService, public router: Router, public  firestore: AngularFirestore) {
   }
 
 
@@ -37,7 +41,7 @@ export class ChannelsDmsComponent implements OnInit {
   }
 
 
-
+  
   // dialog: any;
 
 
@@ -47,10 +51,27 @@ export class ChannelsDmsComponent implements OnInit {
     dialogRef.afterClosed().subscribe((channelName: any) => {
       console.log('The dialog was closed', channelName);
       if (channelName && channelName.length > 0) {
-        this.chats.name = channelName;
+       this.data.nameChanel.push(channelName);
         console.log('funktiion', this.chats.name);
-      }
-    });
+
+  }
+});
+
+    
+   
+  }
+
+
+  chatrooms(){
+     // Start-Game
+     let chat = new Chat();
+     this.firestore
+   .collection('chats')
+   .add(chat.toJson())
+   .then((chatInfo:any) =>{
+     this.router.navigateByUrl('/chats/' + chatInfo.id);
+   });
+  
   }
 
 

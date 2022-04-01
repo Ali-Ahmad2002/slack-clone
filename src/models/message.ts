@@ -1,5 +1,7 @@
 export class Message {
-    public text!: string;
-    public author!: string; //USER ID FROM FIRESTORE COLLECTION USERS
-    public chatId!: string; //CHAT ID FROM  FIRESTORE COLLECTION CHATS
+    public $key!:string;
+    public email!:string;
+    public username!:string;
+    public message!: string; //USER ID FROM FIRESTORE COLLECTION USERS
+    public timeSend: Date = new Date(); //CHAT ID FROM  FIRESTORE COLLECTION CHATS
 }
