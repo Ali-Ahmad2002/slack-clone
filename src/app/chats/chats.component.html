@@ -12,8 +12,6 @@
         <h1>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi, repudiandae, ratione vel numquam dolores, quae minus natus tempore quos quisquam non corrupti eum adipisci! Aspernatur iste optio odit similique vero!
         </h1>
 
-
-
         <ul>
             <li>
                 {{ chatId }}
@@ -28,8 +26,8 @@
 
 
         <div class="textArea_container">
-            <textarea (keyup.enter)="showtext()" placeholder="Write message" id="text" cols="15" rows="5" type="text" name="message" [(ngModel)]="message"></textarea>
-            <!-- <button (click)="showNameChat(nameChat)">Send ICON</button> -->
+            <textarea placeholder="Write message" id="text" cols="15" rows="5" type="text" name="message" [(ngModel)]="message"></textarea>
+            <button (click)="showtext()">Send ICON</button>
         </div>
 
     </div>

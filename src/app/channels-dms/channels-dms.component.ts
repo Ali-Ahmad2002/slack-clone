@@ -1,4 +1,3 @@
-//import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { SelectionModel } from '@angular/cdk/collections';
 import { FlatTreeControl } from '@angular/cdk/tree';
@@ -30,28 +29,27 @@ import { User } from 'src/models/user';
 export class ChannelsDmsComponent implements OnInit {
 
   chats: Chat[] = [];
- 
 
-  constructor(public dialog: MatDialog,  public data: DataService, public router: Router, public  firestore: AngularFirestore) {
+
+  constructor(public dialog: MatDialog, public data: DataService, public router: Router, public firestore: AngularFirestore) {
   }
+
 
 
   ngOnInit(): void {
     console.log('chatOBJ', this.chats)
     this.firestore.collection('chats')
-    .valueChanges({idField: 'id'})
-    .subscribe(chats  => {
-     chats.forEach(c => {
-    this.chats.push(new Chat(c));
+      .valueChanges({ idField: 'id' })
+      .subscribe(chats => {
+        chats.forEach(c => {
+         this.chats.push(new Chat(c));
+          console.log('firestore chats', c)
+        })
 
-     })
-      
-    })
+      })
+
   }
 
-
-  
-  // dialog: any;
 
 
   openDialog(): void {
@@ -60,19 +58,27 @@ export class ChannelsDmsComponent implements OnInit {
     dialogRef.afterClosed().subscribe((channelName: any) => {
       console.log('The dialog was closed', channelName);
       if (channelName && channelName.length > 0) {
-      
-      
+        const newChanel = new Chat();
+        newChanel.name = channelName;
+        // this.chats = 'asdf';
+        // this.chats = 'test';
+        // this.chats.timeStamp = new Date().getTime();
+
+        this.firestore.collection('chats')
+          .add(newChanel.toJson())
+
+
+
+      }
+    });
+
+
 
   }
-});
-
-    
-   
-  }
 
 
-  chatrooms(){
- 
+  chatrooms() {
+
   }
 
 
