@@ -1,28 +1,25 @@
 export class Chat {
 
     public name: string = '';
-    public id: any = [];
-    public message: any  = [];
+    public id: string = '';
     public imgUrl: string  = '';
     public timeStamp: number  = 0; 
     public creator: string  = ''; //User ID From FIRESTORE COLLECTION USERS
 
 
-    // constructor(obj: any) {
-    //     this.name = obj.name;
-    //     this.id = obj.id;
-    //     this.message = obj.message;
-    //     this.imgUrl = obj.imgUrl;
-    //     this.timeStamp = obj.timeStamp;
-    //     this.creator = obj.creator;
-    // }
+    constructor(obj?: any) {
+        this.name = obj ? obj.name : '';
+        this.id = obj ? obj.id : '';
+        this.imgUrl = obj ? obj.imgUrl : '';
+        this.timeStamp = obj ? obj.timeStamp : 0;
+        this.creator = obj ? obj.creator : '';
+    }
 
 
     public toJson() {
         return {
             name: this.name,
             id: this.id,
-            message: this.message,
             imgUrl: this.imgUrl,
             timeStamp: this.timeStamp,
             creator: this.creator

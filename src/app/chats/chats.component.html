@@ -16,13 +16,13 @@
 
         <ul>
             <li>
-                {{this.chat.id }}
+                {{ chatId }}
             </li>
         </ul>
 
         <ul>
-            <li *ngFor="let chat of chat.message">
-                {{this.chat }}
+            <li *ngFor="let message of message">
+                {{ message.text }}
             </li>
         </ul>
 

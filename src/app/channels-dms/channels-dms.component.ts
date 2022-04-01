@@ -29,7 +29,7 @@ import { User } from 'src/models/user';
 
 export class ChannelsDmsComponent implements OnInit {
 
-  chats = new Chat();
+  chats: Chat[] = [];
  
 
   constructor(public dialog: MatDialog,  public data: DataService, public router: Router, public  firestore: AngularFirestore) {
@@ -38,6 +38,15 @@ export class ChannelsDmsComponent implements OnInit {
 
   ngOnInit(): void {
     console.log('chatOBJ', this.chats)
+    this.firestore.collection('chats')
+    .valueChanges({idField: 'id'})
+    .subscribe(chats  => {
+     chats.forEach(c => {
+    this.chats.push(new Chat(c));
+
+     })
+      
+    })
   }
 
 
@@ -51,8 +60,8 @@ export class ChannelsDmsComponent implements OnInit {
     dialogRef.afterClosed().subscribe((channelName: any) => {
       console.log('The dialog was closed', channelName);
       if (channelName && channelName.length > 0) {
-       this.data.nameChanel.push(channelName);
-        console.log('funktiion', this.chats.name);
+      
+      
 
   }
 });
@@ -63,17 +72,8 @@ export class ChannelsDmsComponent implements OnInit {
 
 
   chatrooms(){
-     // Start-Game
-     let chat = new Chat();
-     this.firestore
-   .collection('chats')
-   .add(chat.toJson())
-   .then((chatInfo:any) =>{
-     this.router.navigateByUrl('/chats/' + chatInfo.id);
-   });
-  
+ 
   }
-
 
 
 }

@@ -45,19 +45,29 @@ export class ChatsComponent implements OnInit {
     this.newChats();
 
    this.router.paramMap.subscribe(paramMap => {
-       this.chat.id = paramMap.get('id');
+       this.chatId = paramMap.get('id');
       console.log('ChatId', this.chat.id);
 
 
       this.firestore
     .collection('chats')
-    .doc(this.chatId)
-    
+    .doc(this.chatId)    
     .valueChanges()
-    .subscribe((result:any) => {
-        console.log('UPDate',result);
-      
+    .subscribe((chat:any) => {
+      this.chat = new Chat(chat)
     })
+
+    this.firestore
+    .collection('messages', ref => ref.where('chatId', '==', this.chatId))   
+    .valueChanges( { idField: 'id '})
+    .subscribe((message:any) => {
+      const tmp = [] as Message[];
+      message.forEach((m:any) => {
+        tmp.push( new Message(tmp))
+      })
+     
+    })
+
       
    });
 
@@ -87,13 +97,7 @@ export class ChatsComponent implements OnInit {
 
   showtext(){
 
-    
-   
-
-     this.chat.message.push(this.message)
-    this.firestore
-     .collection('chats')
-     .add(this.chat.toJson())
+  
    
    this.message  = ''
   }
