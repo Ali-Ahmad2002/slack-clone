@@ -1,14 +1,5 @@
 import { Component, Injectable, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { ChannelsDmsComponent } from '../channels-dms/channels-dms.component';
-
-//import { DataService } from '../data.service';
-
-
-
-// @Injectable({
-//   providedIn: "root",
-// })
 
 @Component({
   selector: 'app-add-channel-overlay',
@@ -23,17 +14,14 @@ export class AddChannelOverlayComponent implements OnInit {
   name:any = '';
 
 
-  constructor(public dialog: MatDialog, public dialogRef: MatDialogRef<AddChannelOverlayComponent>) {
-   
-
-    // this.data.dataSource.data = this.data.TREE_DATA;
+  constructor(
+    public dialog: MatDialog, 
+    public dialogRef: MatDialogRef<AddChannelOverlayComponent>) {
   }
-
 
   ngOnInit(): void {
   
   }
-
 
   onNoClick():void{
     this.dialogRef.close();

@@ -1,6 +1,3 @@
-<!-- <div>
-    <app-chats *ngFor="let new of this.data.newChanells let i = index" [name]="new"> </app-chats>
-</div> -->
 <div class="test">
     <div class="main_container">
         <div class="child_container">
@@ -8,15 +5,12 @@
             <button (click)="openDialog()">+</button>
         </div>
         <div *ngFor="let chat of chats; let i = index">
-            <a [routerLink]="'chats/' + chat.id"> #{{ chat.name }} </a>
-            <!-- [routerLink]="'chats/' + chatInfo.id" -->
+            <a [routerLink]="'chats/' + chat.id"> #{{ chat.name   }} </a>
         </div>
     </div>
 
     <div>
-
         <router-outlet></router-outlet>
     </div>
-
 
 </div>

@@ -1,34 +1,18 @@
 <div class="main_container">
 
     <div>
-
-
-
-        <span *ngFor="let title of data.nameChanel"> {{ title }} </span>
-
-
-
+        <h2> {{this.chatId }} </h2>
 
         <h1>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi, repudiandae, ratione vel numquam dolores, quae minus natus tempore quos quisquam non corrupti eum adipisci! Aspernatur iste optio odit similique vero!
         </h1>
 
-        <ul>
-            <li>
-                {{ chatId }}
-            </li>
-        </ul>
-
-        <ul>
-            <li *ngFor="let message of message">
-                {{ message.text }}
-            </li>
-        </ul>
-
-
-        <div class="textArea_container">
-            <textarea placeholder="Write message" id="text" cols="15" rows="5" type="text" name="message" [(ngModel)]="message"></textarea>
-            <button (click)="showtext()">Send ICON</button>
+        <div *ngFor="let messages of messages">
+            {{ messages.text }}
         </div>
 
+        <div class="textArea_container">
+            <textarea (keyup)="showtext()" placeholder="Write message" id="text" cols="15" rows="5" type="text" name="message" [(ngModel)]="message"></textarea>
+            <!-- <button (click)="">Send ICON</button> -->
+        </div>
     </div>
 </div>

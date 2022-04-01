@@ -11,9 +11,6 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
 import { User } from 'src/models/user';
 
-
-
-
 @Injectable({
   providedIn: "root",
 })
@@ -25,29 +22,23 @@ import { User } from 'src/models/user';
 })
 
 
-
 export class ChannelsDmsComponent implements OnInit {
 
-  chats: Chat[] = [];
+  chats!: Chat[];
 
-
-  constructor(public dialog: MatDialog, public data: DataService, public router: Router, public firestore: AngularFirestore) {
+  constructor(
+    public dialog: MatDialog, 
+    public data: DataService, 
+    public router: Router, 
+    public firestore: AngularFirestore) {
   }
 
-
-
   ngOnInit(): void {
-    console.log('chatOBJ', this.chats)
-    this.firestore.collection('chats')
-      .valueChanges({ idField: 'id' })
-      .subscribe(chats => {
-        chats.forEach(c => {
-         this.chats.push(new Chat(c));
-          console.log('firestore chats', c)
-        })
-
+      this.firestore.collection('chats')
+      .valueChanges({idField: 'id'})
+      .subscribe(chats =>{
+        this.chats = chats.map( chat => new Chat(chat))
       })
-
   }
 
 
@@ -60,26 +51,10 @@ export class ChannelsDmsComponent implements OnInit {
       if (channelName && channelName.length > 0) {
         const newChanel = new Chat();
         newChanel.name = channelName;
-        // this.chats = 'asdf';
-        // this.chats = 'test';
-        // this.chats.timeStamp = new Date().getTime();
-
+        newChanel.timeStamp = new Date().getTime();
         this.firestore.collection('chats')
           .add(newChanel.toJson())
-
-
-
       }
     });
-
-
-
   }
-
-
-  chatrooms() {
-
-  }
-
-
 }
