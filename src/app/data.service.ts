@@ -6,14 +6,15 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class DataService {
-  nameChanel:any = [];
+  nameChanel: any = [];
 
+  clickedMsg: string = '';
 
   constructor() { }
 
 
- 
-  
+
+
 
 
 

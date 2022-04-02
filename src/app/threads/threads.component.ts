@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Chat } from 'src/models/chat';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-threads',
@@ -7,9 +10,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ThreadsComponent implements OnInit {
 
-  constructor() { }
+  
+
+  constructor(public firestore: AngularFirestore, public data: DataService) { }
 
   ngOnInit(): void {
+
   }
+
 
 }

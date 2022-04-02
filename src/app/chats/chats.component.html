@@ -1,14 +1,15 @@
 <div class="main_container">
 
     <div>
-        <h2> {{ this.chat.name }} </h2>
+        <h2> {{ chat.name }} </h2>
 
         <h1>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi, repudiandae, ratione vel numquam dolores, quae minus natus tempore quos quisquam non corrupti eum adipisci! Aspernatur iste optio odit similique vero!
         </h1>
 
-        <div *ngFor="let messag of messages">
-            <a (click)="showThreads(messag)">
-                <img class="img" src="{{userImg}}" alt=""> {{ messag.author }}: {{ messag.text }} <br> {{ messag.timeStamp | date :'short' }}
+        <div *ngFor="let message of messages">
+            <a>
+                <img class="img" src="{{ userImg }}" alt=""> {{ message.author }}: {{ message.text }} <br> {{ message.timeStamp | date :'short' }}
+                <button (click)="showThreads(message)">Antworten</button>
             </a>
 
         </div>
@@ -18,4 +19,12 @@
             <button (click)="showtext()">Send ICON</button>
         </div>
     </div>
+
+
+
+</div>
+
+
+<div>
+    <router-outlet></router-outlet>
 </div>

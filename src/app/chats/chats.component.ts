@@ -17,7 +17,7 @@ import { DataService } from '../data.service';
 })
 export class ChatsComponent implements OnInit {
 
-  
+
   user = new User();
   message!: any;
   chatId!: any;
@@ -30,41 +30,43 @@ export class ChatsComponent implements OnInit {
   userImg: string = 'assets/img/profile/1.webp';
 
 
-  
+
 
 
   constructor(
-    public router: ActivatedRoute, 
-    public data: DataService, 
-    public firestore: AngularFirestore) { }
+    public router: ActivatedRoute,
+    public data: DataService,
+    public firestore: AngularFirestore,
+    public router2: Router,
+  ) { }
 
   ngOnInit(): void {
-   
-  // ID holen
+
+    // ID holen
     this.router.paramMap.subscribe(paramMap => {
       this.chatId = paramMap.get('id');
-     
 
-  // Chats hollen für Chats
+
+      // Chats hollen für Chats
       this.firestore
         .collection('chats')
-        .doc(this.chatId)
+        .doc(this.chatId) //Mit .doc holt man sich die Daten
         .valueChanges()
         .subscribe((chat: any) => {
           this.chat = new Chat(chat)
         })
 
-  //  Nachrichten holen
+      //  Nachrichten holen
       this.firestore
         .collection('messages', ref => ref.where('chatId', '==', this.chatId))
         .valueChanges({ idField: 'id' })
         .subscribe((messages: any) => {
-          this.messages = messages.map( (message:any) => new Message(message))
+          this.messages = messages.map((message: any) => new Message(message))
         })
-      });
+    });
   }
 
- 
+
 
   showtext() {
     const newMessage = new Message();
@@ -73,21 +75,23 @@ export class ChatsComponent implements OnInit {
     newMessage.author = this.author;
     newMessage.userImg = this.userImg;
     newMessage.timeStamp = new Date().getTime();
-    
+
     this.message = ''
     this.firestore.collection('messages')
       .add(newMessage.toJson())
 
   }
-  
 
 
 
-  showThreads(msg:any){
-    console.log('msg',msg);
+
+  showThreads(msg: any) {
+   
+     console.log(msg)
     
+
   }
 
- 
+
 
 }
