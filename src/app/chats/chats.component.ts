@@ -82,16 +82,4 @@ export class ChatsComponent implements OnInit {
 
   }
 
-
-
-
-  showThreads(msg: any) {
-   
-     console.log(msg)
-    
-
-  }
-
-
-
 }

@@ -1,7 +1,10 @@
 <div class="mainContainer">
     <div class="head">
         <h1>Threads</h1>
-        <span># Text </span>
-    </div>
+        <span># {{ this.data.clickedChat.name }}  </span>
 
+    </div>
+    <p> <img class="img" src="{{ this.data.clickedMsg.userImg }}" alt=""> {{ this.data.clickedMsg.author }}</p> <br>
+    <p>{{ this.data.clickedMsg.text }}</p>
+    <p>{{ this.data.clickedMsg.timeStamp | date :'short' }}</p>
 </div>

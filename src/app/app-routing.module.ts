@@ -6,7 +6,7 @@ import { ThreadsComponent } from './threads/threads.component';
 
 const routes: Routes = [
   { path: 'chats/:id', component: ChatsComponent }, 
-  {path: 'threads', component: ThreadsComponent}
+  {path: 'threads/:id', component: ThreadsComponent}
 ];
 
 @NgModule({

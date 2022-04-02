@@ -6,25 +6,22 @@
         <h1>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi, repudiandae, ratione vel numquam dolores, quae minus natus tempore quos quisquam non corrupti eum adipisci! Aspernatur iste optio odit similique vero!
         </h1>
 
-        <div *ngFor="let message of messages">
+        <div *ngFor="let message of messages; let i= index">
             <a>
-                <img class="img" src="{{ userImg }}" alt=""> {{ message.author }}: {{ message.text }} <br> {{ message.timeStamp | date :'short' }}
-                <button (click)="showThreads(message)">Antworten</button>
+                <img class="img " src="{{ userImg }} " alt=" "> {{ message.author }}: {{ message.text }} <br> {{ message.timeStamp | date :'short' }}
+                <a [routerLink]=" '/threads/' + chat " (click)="data.showThreads(message, chat) ">Antworten</a>
             </a>
 
         </div>
 
-        <div class="textArea_container">
-            <textarea placeholder="Write message" id="text" cols="15" rows="5" type="text" name="message" [(ngModel)]="message"></textarea>
-            <button (click)="showtext()">Send ICON</button>
+        <div class="textArea_container ">
+            <textarea placeholder="Write message " id="text " cols="15 " rows="5 " type="text " name="message " [(ngModel)]="message "></textarea>
+            <button (click)="showtext() ">Send ICON</button>
         </div>
     </div>
 
+    <div>
+        <router-outlet></router-outlet>
+    </div>
 
-
-</div>
-
-
-<div>
-    <router-outlet></router-outlet>
 </div>
