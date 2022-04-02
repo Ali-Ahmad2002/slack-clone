@@ -9,10 +9,6 @@ import { DataService } from '../data.service';
 
 
 
-
-
-
-
 @Component({
   selector: 'app-chats',
   templateUrl: './chats.component.html',
@@ -29,6 +25,14 @@ export class ChatsComponent implements OnInit {
   messages!: Message[];
 
 
+  // Dummy  User
+  author: string = 'Sani';
+  userImg: string = 'assets/img/profile/1.webp';
+
+
+  
+
+
   constructor(
     public router: ActivatedRoute, 
     public data: DataService, 
@@ -40,7 +44,7 @@ export class ChatsComponent implements OnInit {
     this.router.paramMap.subscribe(paramMap => {
       this.chatId = paramMap.get('id');
      
-    });
+
   // Chats hollen für Chats
       this.firestore
         .collection('chats')
@@ -53,11 +57,11 @@ export class ChatsComponent implements OnInit {
   //  Nachrichten holen
       this.firestore
         .collection('messages', ref => ref.where('chatId', '==', this.chatId))
-        .valueChanges({ idField: 'id ' })
+        .valueChanges({ idField: 'id' })
         .subscribe((messages: any) => {
           this.messages = messages.map( (message:any) => new Message(message))
         })
-  
+      });
   }
 
  
@@ -66,11 +70,24 @@ export class ChatsComponent implements OnInit {
     const newMessage = new Message();
     newMessage.chatId = this.chatId;
     newMessage.text = this.message;
+    newMessage.author = this.author;
+    newMessage.userImg = this.userImg;
     newMessage.timeStamp = new Date().getTime();
-
+    
+    this.message = ''
     this.firestore.collection('messages')
       .add(newMessage.toJson())
 
   }
+  
+
+
+
+  showThreads(msg:any){
+    console.log('msg',msg);
+    
+  }
+
+ 
 
 }

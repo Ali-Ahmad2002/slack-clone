@@ -54,6 +54,9 @@ export class ChannelsDmsComponent implements OnInit {
         newChanel.timeStamp = new Date().getTime();
         this.firestore.collection('chats')
           .add(newChanel.toJson())
+          .then((chat:any) => {
+           this.router.navigateByUrl('/chats/' + chat.id)
+          });
       }
     });
   }

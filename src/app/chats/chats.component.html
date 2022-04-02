@@ -1,18 +1,21 @@
 <div class="main_container">
 
     <div>
-        <h2> {{this.chatId }} </h2>
+        <h2> {{ this.chat.name }} </h2>
 
         <h1>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi, repudiandae, ratione vel numquam dolores, quae minus natus tempore quos quisquam non corrupti eum adipisci! Aspernatur iste optio odit similique vero!
         </h1>
 
-        <div *ngFor="let messages of messages">
-            {{ messages.text }}
+        <div *ngFor="let messag of messages">
+            <a (click)="showThreads(messag)">
+                <img class="img" src="{{userImg}}" alt=""> {{ messag.author }}: {{ messag.text }} <br> {{ messag.timeStamp | date :'short' }}
+            </a>
+
         </div>
 
         <div class="textArea_container">
-            <textarea (keyup)="showtext()" placeholder="Write message" id="text" cols="15" rows="5" type="text" name="message" [(ngModel)]="message"></textarea>
-            <!-- <button (click)="">Send ICON</button> -->
+            <textarea placeholder="Write message" id="text" cols="15" rows="5" type="text" name="message" [(ngModel)]="message"></textarea>
+            <button (click)="showtext()">Send ICON</button>
         </div>
     </div>
 </div>

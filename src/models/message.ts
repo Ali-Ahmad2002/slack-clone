@@ -4,23 +4,28 @@ export class Message {
     public chatId: string  = '';
     public timeStamp: number  = 0; 
     public id: string  = ''; //User ID From FIRESTORE COLLECTION USERS
+    public userImg:string = '';
 
 
     constructor(obj?: any) {
-        this.author = obj ? obj.name : '';
-        this.text = obj ? obj.id : '';
-        this.chatId = obj ? obj.imgUrl : '';
+        this.author = obj ? obj.author : '';
+        this.text = obj ? obj.text : '';
+        this.chatId = obj ? obj.chatId : '';
         this.timeStamp = obj ? obj.timeStamp : 0;
-        this.id = obj ? obj.creator : '';
+        this.id = obj ? obj.id : '';
+        this.userImg = obj ? obj.userImg : '';
     }
 
 
     public toJson() {
         return {
-            name: this.author,
+            author: this.author,
             text: this.text,
+            chatId: this.chatId,
             timeStamp: this.timeStamp,
-            chatId: this.chatId
+            id: this.id,
+            userImg: this.userImg
+            
         };
     }
 

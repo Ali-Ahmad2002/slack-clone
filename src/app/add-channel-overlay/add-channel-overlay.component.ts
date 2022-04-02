@@ -1,5 +1,6 @@
 import { Component, Injectable, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { Message } from 'src/models/message';
 
 @Component({
   selector: 'app-add-channel-overlay',
@@ -12,6 +13,7 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 export class AddChannelOverlayComponent implements OnInit {
  
   name:any = '';
+  
 
 
   constructor(
