@@ -4,6 +4,9 @@
     color: white;
     padding: 0 16px;
     position: relative;
+    display: flex;
+    justify-content: space-between;
+    width: 85vw;
 }
 
 .textArea_container {
@@ -11,14 +14,22 @@
     bottom: 16px;
     right: 16px;
     left: 16px;
-    textarea {
-        width: 100%;
-        background-color: #22272e;
-        color: white;
-    }
+    width: calc(100% - 600px);
+}
+
+textarea {
+    background-color: #22272e;
+    color: white;
+    width: 99%;
 }
 
 .img {
     width: 30px;
     height: 30px;
+}
+
+.outletClass {}
+
+.threadContainer {
+    border-left: 1px solid white;
 }

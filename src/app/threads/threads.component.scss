@@ -1,6 +1,14 @@
 .mainContainer {
-    width: 400px;
+    width: 550px;
     color: white;
+    position: relative;
+    height: 100vh;
+    h3 {
+        position: absolute;
+        top: 6px;
+        right: 90px;
+        cursor: pointer;
+    }
 }
 
 .head {
@@ -16,4 +24,18 @@
 .img {
     width: 30px;
     height: 30px;
+}
+
+.textArea_container {
+    position: absolute;
+    bottom: 16px;
+    right: 16px;
+    left: 16px;
+    width: 100%;
+}
+
+textarea {
+    background-color: #22272e;
+    color: white;
+    width: calc(100% - 85px);
 }

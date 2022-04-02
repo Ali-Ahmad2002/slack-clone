@@ -3,13 +3,10 @@
     <div>
         <h2> {{ chat.name }} </h2>
 
-        <h1>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi, repudiandae, ratione vel numquam dolores, quae minus natus tempore quos quisquam non corrupti eum adipisci! Aspernatur iste optio odit similique vero!
-        </h1>
-
         <div *ngFor="let message of messages; let i= index">
             <a>
                 <img class="img " src="{{ userImg }} " alt=" "> {{ message.author }}: {{ message.text }} <br> {{ message.timeStamp | date :'short' }}
-                <a [routerLink]=" '/threads/' + chat " (click)="data.showThreads(message, chat) ">Antworten</a>
+                <a (click)="data.showThreads(message, chat) ">Antworten</a>
             </a>
 
         </div>
@@ -20,8 +17,13 @@
         </div>
     </div>
 
-    <div>
+    <div class="outletClass">
         <router-outlet></router-outlet>
     </div>
+
+    <div class="threadContainer">
+        <app-threads *ngIf="data.thread"></app-threads>
+    </div>
+
 
 </div>

@@ -79,7 +79,6 @@ export class ChatsComponent implements OnInit {
     this.message = ''
     this.firestore.collection('messages')
       .add(newMessage.toJson())
-
   }
 
 }

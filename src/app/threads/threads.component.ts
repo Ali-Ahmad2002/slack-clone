@@ -10,24 +10,33 @@ import { ActivatedRoute, Route, Router } from '@angular/router';
 })
 export class ThreadsComponent implements OnInit {
 
-  chatId!:any;
+  chatId!: any;
+  message!: string;
 
   constructor(
-    public firestore: AngularFirestore, 
+    public firestore: AngularFirestore,
     public data: DataService,
     public route: ActivatedRoute
-    
-    ) { }
+  ) { }
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe(paramMap => {
-      this.chatId = paramMap.get('id');
-      console.log(this.chatId)
-    });
+    // this.route.paramMap.subscribe(paramMap => {
+    //   this.chatId = paramMap.get('id');
+    //   console.log(this.chatId)
+    // });
+    setTimeout(() => {
+      console.log(this.data);
+      console.log(this.data.clickedChat);
+    }, 3000);
+  }
 
-    console.log(this.data.clickedMsg);
-    console.log(this.data.clickedChat);
-    
+  closeThread() {
+    this.data.thread = false;
+  }
+
+  showThreadMessage() {
+    console.log(this.message);
+    this.message = '';
   }
 
 }
