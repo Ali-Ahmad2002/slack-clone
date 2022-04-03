@@ -6,7 +6,7 @@
         <div *ngFor="let message of messages; let i= index">
             <a>
                 <img class="img " src="{{ userImg }} " alt=" "> {{ message.author }}: {{ message.text }} <br> {{ message.timeStamp | date :'short' }}
-                <a (click)="data.showThreads(message, chat) ">Antworten</a>
+                <button class="answerCon" (click)="data.showThreads(message, chat) ">Antworten</button>
             </a>
 
         </div>

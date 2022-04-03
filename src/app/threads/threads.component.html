@@ -3,15 +3,15 @@
     <div class="head">
         <h1>Threads</h1>
         <span># {{ this.data.clickedChat.name }} </span>
-
     </div>
     <p> <img class="img" src="{{ this.data.clickedMsg.userImg }}" alt=""> {{ this.data.clickedMsg.author }}</p> <br>
     <p>{{ this.data.clickedMsg.text }}</p>
     <p>{{ this.data.clickedMsg.timeStamp | date :'short' }}</p>
-    <p> {{ message }} </p>
+    <p *ngFor="let msg of answer"> {{ msg.text }} </p>
+
 
     <div class="textArea_container">
-        <textarea placeholder="Write message " id="text " cols="15 " rows="5 " type="text " name="message " [(ngModel)]="message "></textarea>
+        <textarea placeholder="Write message " id="text " cols="15 " rows="5 " type="text " name="message " [(ngModel)]="message"></textarea>
         <button (click)="showThreadMessage()">Send ICON</button>
     </div>
 
