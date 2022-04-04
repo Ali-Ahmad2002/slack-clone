@@ -14,7 +14,7 @@ export class ThreadsComponent implements OnInit {
   chatId!: any;
   message!: string;
   answer!: Message[];
-  threadMsg: any = [];
+ 
 
   constructor(
     public firestore: AngularFirestore,
@@ -23,12 +23,19 @@ export class ThreadsComponent implements OnInit {
   ) { }
   
   ngOnInit(): void {
-    // this.route.paramMap.subscribe(paramMap => {
-    //   this.chatId = paramMap.get('id');
-    //   console.log(this.chatId)
-    // });
-    console.log(this.data);
-    console.log(this.data.clickedChat);
+    this.route.paramMap.subscribe(paramMap => {
+      this.chatId = paramMap.get('id');
+      console.log(this.chatId)
+    });
+    this.firestore.collection('threads')
+    .valueChanges({idField: 'id'})
+    .subscribe(answer =>{
+      this.answer = answer.map( answe => new Message(answe))
+
+      
+ 
+    });
+
   }
 
   closeThread() {
@@ -36,11 +43,19 @@ export class ThreadsComponent implements OnInit {
   }
 
   showThreadMessage() {
-    // console.log(this.message);
+  
     const newThreadMsg = new Message();
     newThreadMsg.text = this.message;
-    this.message = '';
-    console.log('MSG', newThreadMsg)
+    newThreadMsg.chatId = this.chatId
+    newThreadMsg.timeStamp = new Date().getTime();
+
+    this.message = ''
+    this.firestore.collection('threads')
+      .add(newThreadMsg.toJson())
+
+
+      console.log(newThreadMsg)
+   
   }
 
 }

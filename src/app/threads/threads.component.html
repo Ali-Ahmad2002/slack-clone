@@ -7,7 +7,11 @@
     <p> <img class="img" src="{{ this.data.clickedMsg.userImg }}" alt=""> {{ this.data.clickedMsg.author }}</p> <br>
     <p>{{ this.data.clickedMsg.text }}</p>
     <p>{{ this.data.clickedMsg.timeStamp | date :'short' }}</p>
-    <p *ngFor="let msg of answer"> {{ msg.text }} </p>
+
+    <div *ngFor="let msg of answer">
+        <p> {{ msg.text }} </p>
+        sdfasdfsadfsd
+    </div>
 
 
     <div class="textArea_container">
