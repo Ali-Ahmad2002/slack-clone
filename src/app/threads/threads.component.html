@@ -2,13 +2,13 @@
     <h3 (click)="closeThread()">X</h3>
     <div class="head">
         <h1>Threads</h1>
-        <span># {{ this.data.clickedChat.name }} </span>
+        <!-- <span># {{ this.data.clickedChat.name }} </span> -->
     </div>
-    <p> <img class="img" src="{{ this.data.clickedMsg.userImg }}" alt=""> {{ this.data.clickedMsg.author }}</p> <br>
+    <!-- <p> <img class="img" src="{{ this.data.clickedMsg.userImg }}" alt=""> {{ this.data.clickedMsg.author }}</p> <br>
     <p>{{ this.data.clickedMsg.text }}</p>
-    <p>{{ this.data.clickedMsg.timeStamp | date :'short' }}</p>
+    <p>{{ this.data.clickedMsg.timeStamp | date :'short' }}</p> -->
 
-    <div *ngFor="let msg of answer">
+    <div *ngFor="let msg of data.answer">
         <p> {{ msg.text }} </p>
 
     </div>

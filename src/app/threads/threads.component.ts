@@ -13,7 +13,7 @@ export class ThreadsComponent implements OnInit {
 
   chatId!: any;
   message!: string;
-  answer!: Message[];
+ 
  
 
   constructor(
@@ -25,15 +25,16 @@ export class ThreadsComponent implements OnInit {
   ngOnInit(): void {
     this.route.paramMap.subscribe(paramMap => {
       this.chatId = paramMap.get('id');
-      console.log(this.chatId)
+      console.log('init', this.chatId)
     });
-    // this.firestore.collection('threads')
+
+
+    
+    // this.firestore.collection('messages')
     // .valueChanges({idField: 'id'})
     // .subscribe(answer =>{
-    //   this.answer = answer.map( answe => new Message(answe))
-
-      
- 
+    //   this.data.answer = answer.map( answe => new Message(answe))
+    //   console.log('data', this.data.answer);
     // });
 
 
@@ -41,8 +42,8 @@ export class ThreadsComponent implements OnInit {
     .collection('threads', ref => ref.where('chatId', '==', this.chatId))
     .valueChanges({ idField: 'id' })
     .subscribe((answer: any) => {
-      this.answer = answer.map((messa: any) => new Message(messa))
-      console.log(this.answer)
+      this.data.answer = answer.map((messa: any) => new Message(messa))
+      console.log(this.data.answer)
     });
 
   }
