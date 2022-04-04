@@ -27,13 +27,22 @@ export class ThreadsComponent implements OnInit {
       this.chatId = paramMap.get('id');
       console.log(this.chatId)
     });
-    this.firestore.collection('threads')
-    .valueChanges({idField: 'id'})
-    .subscribe(answer =>{
-      this.answer = answer.map( answe => new Message(answe))
+    // this.firestore.collection('threads')
+    // .valueChanges({idField: 'id'})
+    // .subscribe(answer =>{
+    //   this.answer = answer.map( answe => new Message(answe))
 
       
  
+    // });
+
+
+    this.firestore
+    .collection('threads', ref => ref.where('chatId', '==', this.chatId))
+    .valueChanges({ idField: 'id' })
+    .subscribe((answer: any) => {
+      this.answer = answer.map((messa: any) => new Message(messa))
+      console.log(this.answer)
     });
 
   }
