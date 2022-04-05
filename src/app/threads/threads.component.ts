@@ -62,9 +62,6 @@ export class ThreadsComponent implements OnInit {
     this.message = ''
     this.firestore.collection('threads')
       .add(newThreadMsg.toJson())
-
-
-      console.log(newThreadMsg)
    
   }
 

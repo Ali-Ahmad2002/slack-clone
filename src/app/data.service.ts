@@ -18,11 +18,11 @@ export class DataService {
 
 
 
-  showThreads() {
+  showThreads(msg:any, chat:any) {
 
-    // this.clickedMsg = msg;
-    // this.clickedChat = chat;
-    // console.log(msg)
+    this.clickedMsg = msg;
+    this.clickedChat = chat;
+   
     this.thread = true;
 
     this.firestore.collection('threads')
