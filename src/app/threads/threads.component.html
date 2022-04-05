@@ -8,7 +8,7 @@
     <p>{{ this.data.clickedMsg.text }}</p>
     <p>{{ this.data.clickedMsg.timeStamp | date :'short' }}</p>
 
-    <div *ngFor="let msg of threads">
+    <div *ngFor="let msg of data.threads">
         <p> {{ msg.text }} </p>
 
     </div>

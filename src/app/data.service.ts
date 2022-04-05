@@ -9,11 +9,11 @@ import { Threads } from 'src/models/threads';
   providedIn: 'root'
 })
 export class DataService {
-  nameChanel: any = [];
+
   thread: boolean = false;
   clickedMsg!: any;
   clickedChat!: any;
-  answer!: Threads;
+  threads!: Threads[];
   
   constructor(public firestore: AngularFirestore) { }
 
@@ -23,17 +23,16 @@ export class DataService {
 
     this.clickedMsg = msg;
     this.clickedChat = chat;
-   
-    this.thread = true;
-
+  
     this.firestore
-    .collection('threads', ref => ref.where('messageId', '==', this.clickedMsg.id))
+    .collection('threads', ref => ref.where('chatId', '==', this.clickedMsg.id))
     .valueChanges({ idField: 'id' })
-    .subscribe((answer: any) => {
-      this.answer = answer.map((messa: any) => new Threads(messa))
-      console.log(this.answer)
+    .subscribe((threads: any) => {
+      this.threads = threads.map((messa: any) => new Threads(messa))
+      console.log(this.threads)
     });
 
+    this.thread = true;
 
   }
 

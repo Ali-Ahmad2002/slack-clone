@@ -14,7 +14,7 @@ export class ThreadsComponent implements OnInit {
 
   chatId!: any;
   message!: string;
-  threads!: Threads[];
+
  
  
 
@@ -26,16 +26,6 @@ export class ThreadsComponent implements OnInit {
   
   ngOnInit(): void {
     
-    // this.firestore.collection('messages')
-    // .valueChanges({idField: 'id'})
-    // .subscribe(answer =>{
-    //   this.data.answer = answer.map( answe => new Message(answe))
-    //   console.log('data', this.data.answer);
-    // });
-
-
-  
-
   }
 
   closeThread() {
@@ -44,6 +34,7 @@ export class ThreadsComponent implements OnInit {
 
   showThreadMessage() {
   
+   
     const newThreadMsg = new Threads();
     newThreadMsg.text = this.message;
     newThreadMsg.chatId = this.data.clickedMsg.id
