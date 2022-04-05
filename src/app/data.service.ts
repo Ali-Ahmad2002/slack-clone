@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Message } from 'src/models/message';
+import { Threads } from 'src/models/threads';
 
 
 
@@ -12,7 +13,7 @@ export class DataService {
   thread: boolean = false;
   clickedMsg!: any;
   clickedChat!: any;
-  answer!: Message[];
+  answer!: Threads;
   
   constructor(public firestore: AngularFirestore) { }
 
@@ -25,11 +26,13 @@ export class DataService {
    
     this.thread = true;
 
-    this.firestore.collection('threads')
-      .valueChanges({ idField: 'id' })
-      .subscribe(answer => {
-        this.answer = answer.map(chat => new Message(chat))
-      })
+    this.firestore
+    .collection('threads', ref => ref.where('messageId', '==', this.clickedMsg.id))
+    .valueChanges({ idField: 'id' })
+    .subscribe((answer: any) => {
+      this.answer = answer.map((messa: any) => new Threads(messa))
+      console.log(this.answer)
+    });
 
 
   }

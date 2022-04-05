@@ -3,6 +3,7 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { DataService } from '../data.service';
 import { ActivatedRoute, Route, Router } from '@angular/router';
 import { Message } from 'src/models/message';
+import { Threads } from 'src/models/threads';
 
 @Component({
   selector: 'app-threads',
@@ -13,6 +14,7 @@ export class ThreadsComponent implements OnInit {
 
   chatId!: any;
   message!: string;
+  threads!: Threads[];
  
  
 
@@ -23,12 +25,6 @@ export class ThreadsComponent implements OnInit {
   ) { }
   
   ngOnInit(): void {
-    this.route.paramMap.subscribe(paramMap => {
-      this.chatId = paramMap.get('id');
-      console.log('init', this.chatId)
-    });
-
-
     
     // this.firestore.collection('messages')
     // .valueChanges({idField: 'id'})
@@ -38,13 +34,7 @@ export class ThreadsComponent implements OnInit {
     // });
 
 
-    this.firestore
-    .collection('threads', ref => ref.where('chatId', '==', this.chatId))
-    .valueChanges({ idField: 'id' })
-    .subscribe((answer: any) => {
-      this.data.answer = answer.map((messa: any) => new Message(messa))
-      console.log(this.data.answer)
-    });
+  
 
   }
 
@@ -54,15 +44,17 @@ export class ThreadsComponent implements OnInit {
 
   showThreadMessage() {
   
-    const newThreadMsg = new Message();
+    const newThreadMsg = new Threads();
     newThreadMsg.text = this.message;
-    newThreadMsg.chatId = this.chatId
+    newThreadMsg.chatId = this.data.clickedMsg.id
     newThreadMsg.timeStamp = new Date().getTime();
 
     this.message = ''
     this.firestore.collection('threads')
       .add(newThreadMsg.toJson())
-   
+      console.log('ANSWER', newThreadMsg);
   }
+ 
+  
 
 }
