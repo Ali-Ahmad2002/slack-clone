@@ -32,10 +32,37 @@
     right: 16px;
     left: 16px;
     width: 100%;
+    button {
+        padding: 8px 50px;
+        cursor: pointer;
+    }
 }
 
 textarea {
     background-color: #22272e;
     color: white;
     width: calc(100% - 85px);
+}
+
+.msgThread {
+    max-width: 450px;
+    word-break: break-all;
+    padding-left: 16px;
+    margin-bottom: 32px;
+}
+
+.writeMSG {
+    max-width: 450px;
+    word-break: break-all;
+    padding-left: 16px;
+}
+
+.authorMSG {
+    display: flex;
+    align-items: center;
+}
+
+.allMSGs {
+    height: 56vh;
+    overflow-y: auto;
 }

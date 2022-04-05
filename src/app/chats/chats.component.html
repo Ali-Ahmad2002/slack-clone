@@ -1,28 +1,31 @@
 <div class="main_container">
 
-    <div>
+    <div class="childContainer">
         <h2> {{ chat.name }} </h2>
 
-        <div *ngFor="let message of messages; let i= index">
-            <a>
-                <img class="img " src="{{ userImg }} " alt=" "> {{ message.author }}: {{ message.text }} <br> {{ message.timeStamp | date :'short' }}
-                <button class="answerCon" (click)="data.showThreads(message,chat) ">Antworten</button>
-            </a>
+        <div class="allChats">
+            <div class="userChat" *ngFor="let message of messages; let i= index">
+                <div class="userChatChild">
+                    <div class="authorClass">
+                        <img class="img " src="{{ userImg }} " alt=" "> {{ message.author }}
 
+                    </div>
+                    <p>{{ message.timeStamp | date :'short' }}</p>
+                    <span>
+                        {{ message.text }}
+                    </span>
+                    <button class="answerCon" (click)="data.showThreads(message,chat) ">Antworten</button>
+                </div>
+
+            </div>
         </div>
 
-        <div class="textArea_container ">
+
+        <div class="textArea_container" [class.areaWidth]="data.thread==true">
             <textarea placeholder="Write message " id="text " cols="15 " rows="5 " type="text " name="message " [(ngModel)]="message "></textarea>
-            <button (click)="showtext() ">Send ICON</button>
+            <button (click)="showtext() ">Send</button>
         </div>
     </div>
-
-    <!-- <div class="outletClass">
-        <router-outlet>
-
-
-        </router-outlet>
-    </div> -->
 
     <div class="threadContainer">
         <app-threads *ngIf="data.thread"></app-threads>

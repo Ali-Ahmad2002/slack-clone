@@ -4,19 +4,28 @@
         <h1>Threads</h1>
         <span># {{ this.data.clickedChat.name }} </span>
     </div>
-    <p> <img class="img" src="{{ this.data.clickedMsg.userImg }}" alt=""> {{ this.data.clickedMsg.author }}</p> <br>
-    <p>{{ this.data.clickedMsg.text }}</p>
-    <p>{{ this.data.clickedMsg.timeStamp | date :'short' }}</p>
 
-    <div *ngFor="let msg of data.threads">
-        <p> {{ msg.text }} </p>
+    <div class="msgThread">
+        <div>
+            <p class="authorMSG"> <img class="img" src="{{ this.data.clickedMsg.userImg }}" alt=""> {{ this.data.clickedMsg.author }}</p>
+            <p>{{ this.data.clickedMsg.timeStamp | date :'short' }}</p>
+        </div>
+        <p>{{ this.data.clickedMsg.text }}</p>
 
     </div>
 
 
+    <div class="allMSGs">
+        <div class="writeMSG" *ngFor="let msg of data.threads">
+            <p> {{ msg.text }} </p>
+        </div>
+    </div>
+
+
+
     <div class="textArea_container">
         <textarea placeholder="Write message " id="text " cols="15 " rows="5 " type="text " name="message " [(ngModel)]="message"></textarea>
-        <button (click)="showThreadMessage()">Send ICON</button>
+        <button (click)="showThreadMessage()">Send</button>
     </div>
 
 </div>
