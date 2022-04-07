@@ -6,7 +6,7 @@
         </div>
         <div class="allChannels">
             <div class="nameContainer" *ngFor="let chat of chats; let i = index">
-                <a [routerLink]="'chats/' + chat.id"> #{{ chat.name }} </a>
+                <a [routerLink]="'/chats/' + chat.id"> #{{ chat.name }} </a>
             </div>
         </div>
 

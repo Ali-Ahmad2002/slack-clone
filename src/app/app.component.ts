@@ -9,7 +9,8 @@ import { DataService } from './data.service';
 export class AppComponent {
   title = 'slack-clone';
 
-
+  isLoggedIn = false;
+  
   constructor( public data:DataService ) { }
 
 }
