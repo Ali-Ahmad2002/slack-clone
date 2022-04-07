@@ -8,7 +8,6 @@
                 <div class="userChatChild">
                     <div class="authorClass">
                         <img class="img " src="{{ userImg }} " alt=" "> {{ message.author }}
-
                     </div>
                     <p>{{ message.timeStamp | date :'short' }}</p>
                     <span>
@@ -16,10 +15,8 @@
                     </span>
                     <button class="answerCon" (click)="data.showThreads(message,chat) ">Antworten</button>
                 </div>
-
             </div>
         </div>
-
 
         <div class="textArea_container" [class.areaWidth]="data.thread==true">
             <textarea placeholder="Write message " id="text " cols="15 " rows="5 " type="text " name="message " [(ngModel)]="message "></textarea>

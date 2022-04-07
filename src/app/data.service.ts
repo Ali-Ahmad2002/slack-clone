@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { Message } from 'src/models/message';
 import { Threads } from 'src/models/threads';
 
 

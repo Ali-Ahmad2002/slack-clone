@@ -11,7 +11,6 @@ import { FormsModule } from '@angular/forms';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 
 
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -19,13 +18,16 @@ import { ChannelsDmsComponent } from './channels-dms/channels-dms.component';
 import { ChatsComponent } from './chats/chats.component';
 import { ThreadsComponent } from './threads/threads.component';
 import { AddChannelOverlayComponent } from './add-channel-overlay/add-channel-overlay.component';
-import { FirebaseAppModule, initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { FirebaseAppModule } from '@angular/fire/app';
 import { environment } from '../environments/environment';
-import { provideAuth,getAuth } from '@angular/fire/auth';
-import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { AngularFireModule } from '@angular/fire/compat';
-import { AngularFirestoreModule } from '@angular/fire/compat/firestore'
-
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { SignInComponent } from './components/sign-in/sign-in.component';
+import { SignUpComponent } from './components/sign-up/sign-up.component';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
  
 
 
@@ -37,7 +39,12 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore'
     ChannelsDmsComponent,
     ChatsComponent,
     ThreadsComponent,
-    AddChannelOverlayComponent
+    AddChannelOverlayComponent,
+    SignInComponent,
+    SignUpComponent,
+    ForgotPasswordComponent,
+    VerifyEmailComponent,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,
@@ -56,7 +63,7 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore'
     AngularFireModule,
     AngularFirestoreModule,
     FirebaseAppModule,
-  
+    AngularFireAuthModule
  
 
    
