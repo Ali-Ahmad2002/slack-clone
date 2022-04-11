@@ -42,6 +42,7 @@ export class ChatsComponent implements OnInit {
 
   ngOnInit(): void {
 
+    this.data.isLoggedIn = true;
     // ID holen
     this.router.paramMap.subscribe(paramMap => {
       this.chatId = paramMap.get('id');

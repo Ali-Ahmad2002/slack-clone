@@ -7,6 +7,7 @@ import {
   AngularFirestoreDocument,
 } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
+import { DataService } from 'src/app/data.service';
 @Injectable({
   providedIn: 'root',
 })
@@ -27,7 +28,8 @@ export class AuthService {
     public afs: AngularFirestore, // Inject Firestore service
     public afAuth: AngularFireAuth, // Inject Firebase auth service
     public router: Router,
-    public ngZone: NgZone // NgZone service to remove outside scope warning
+    public ngZone: NgZone, // NgZone service to remove outside scope warning
+    public data: DataService
   ) {
     /* Saving user data in localstorage when 
     logged in and setting up null when logged out */
@@ -48,7 +50,8 @@ export class AuthService {
       .signInWithEmailAndPassword(email, password)
       .then((result) => {
         this.ngZone.run(() => {
-          this.router.navigate(['channelsDms']);
+          this.router.navigate(['chats/:id']);
+          this.data.isLoggedIn = true;
         });
         this.SetUserData(result.user);
       })
@@ -98,7 +101,8 @@ export class AuthService {
   GoogleAuth() {
     return this.AuthLogin(new auth.GoogleAuthProvider()).then((res: any) => {
       if (res) {
-        this.router.navigate(['channelsDms']);
+        this.router.navigate(['chats/:id']);
+        this.data.isLoggedIn = true;
       }
     });
   }
@@ -108,7 +112,8 @@ export class AuthService {
       .signInWithPopup(provider)
       .then((result) => {
         this.ngZone.run(() => {
-          this.router.navigate(['channelsDms']);
+          this.router.navigate(['chats/:id']);
+          this.data.isLoggedIn = true;
         });
         this.SetUserData(result.user);
       })
