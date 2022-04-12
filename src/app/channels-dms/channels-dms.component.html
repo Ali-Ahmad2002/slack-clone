@@ -6,16 +6,35 @@
         </div>
         <div class="allChannels">
             <div class="nameContainer" *ngFor="let chat of chats; let i = index">
-                <a [routerLink]="'/chats/' + chat.id"> #{{ chat.name }} </a>
+                <a (click)="reactiveDm()" [routerLink]="'/chats/' + chat.id"> #{{ chat.name }} </a>
+            </div>
+
+
+        </div>
+
+        <div class="child_container">
+            <h2>DMs</h2>
+        </div>
+        <div class="allChannels">
+            <div class="nameContainer" *ngFor="let users of users; let i = index">
+
+                <a (click)="activeDm()" [routerLink]="'/chats/' + users.id"> #{{ users.email }} </a>
+                <p>ID: {{ users.id}} </p>
+                <p>UID: {{users.uid}} </p>
+
+            </div>
+
+
+            <p>Email: <strong>{{user.email}}</strong></p>
+
+            <p>Uid: <strong>{{user.uid}}</strong></p>
+
+            <p>Id: <strong>{{user.id}}</strong></p>
+
+            <div class="outContainer">
+                <button (click)="authService.SignOut()" class="logOut">Log out</button>
             </div>
         </div>
-
-        <p>Email: <strong>{{user.email}}</strong></p>
-
-        <div class="outContainer">
-            <button (click)="authService.SignOut()" class="logOut">Log out</button>
-        </div>
-
 
 
     </div>

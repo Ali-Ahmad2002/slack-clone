@@ -25,7 +25,7 @@ import { AuthService } from '../shared/services/auth.service';
 
 export class ChannelsDmsComponent implements OnInit {
 
-
+  users: any = []
   chats!: Chat[];
 
   constructor(
@@ -33,10 +33,7 @@ export class ChannelsDmsComponent implements OnInit {
     public data: DataService,
     public router: Router,
     public firestore: AngularFirestore,
-    public authService: AuthService,
-    
-  ) {
-  }
+    public authService: AuthService) { }
 
   ngOnInit(): void {
     this.firestore.collection('chats')
@@ -45,11 +42,14 @@ export class ChannelsDmsComponent implements OnInit {
         this.chats = chats.map(chat => new Chat(chat))
       })
 
- 
-      
+
+    this.firestore.collection('users')
+      .valueChanges({ idField: 'id' })
+      .subscribe(users => {
+        this.users = users;
+        console.log('chatneuekacke', users)
+      })
   }
-
-
 
   openDialog(): void {
     const dialogRef = this.dialog.open(AddChannelOverlayComponent);
@@ -68,5 +68,14 @@ export class ChannelsDmsComponent implements OnInit {
       }
     });
   }
+
+  activeDm() {
+    this.data.dmsActive = true;
+  }
+
+  reactiveDm() {
+    this.data.dmsActive = false;
+  }
+
 
 }

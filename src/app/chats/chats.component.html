@@ -13,7 +13,7 @@
                     <span>
                         {{ message.text }}
                     </span>
-                    <button class="answerCon" (click)="data.showThreads(message,chat) ">Antworten</button>
+                    <button *ngIf="data.dmsActive==false" class="answerCon" (click)="data.showThreads(message,chat) ">Antworten</button>
                 </div>
             </div>
         </div>

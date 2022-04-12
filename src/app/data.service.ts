@@ -14,6 +14,8 @@ export class DataService {
   clickedChat!: any;
   threads!: Threads[];
   isLoggedIn = false;
+
+  dmsActive: boolean = false;
   
   constructor(public firestore: AngularFirestore) { }
 
