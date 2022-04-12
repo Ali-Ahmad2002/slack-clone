@@ -45,6 +45,9 @@ export class ChatsComponent implements OnInit {
   ngOnInit(): void {
     console.log('auth', this.authService)
 
+  console.log('emilaUserauto', this.authService.userData.multiFactor.user.uid);
+    
+
    this.data.isLoggedIn = true;
     // ID holen
     this.router.paramMap.subscribe(paramMap => {
@@ -79,6 +82,7 @@ export class ChatsComponent implements OnInit {
     newMessage.author = this.authService.userData.multiFactor.user.email;
     newMessage.userImg = this.userImg;
     newMessage.timeStamp = new Date().getTime();
+    newMessage.id = this.authService.userData.multiFactor.user.uid;
 
     this.message = ''
     this.firestore.collection('messages')
