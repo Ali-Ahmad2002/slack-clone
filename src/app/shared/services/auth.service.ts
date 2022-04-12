@@ -50,7 +50,7 @@ export class AuthService {
       .signInWithEmailAndPassword(email, password)
       .then((result) => {
         this.ngZone.run(() => {
-          this.router.navigate(['chats/:id']);
+          this.router.navigate(['/chats/:id']);
           this.data.isLoggedIn = true;
         });
         this.SetUserData(result.user);
@@ -142,8 +142,10 @@ export class AuthService {
   // Sign out
   SignOut() {
     return this.afAuth.signOut().then(() => {
+      this.data.isLoggedIn = false;
       localStorage.removeItem('user');
       this.router.navigate(['sign-in']);
+    
     });
   }
 }

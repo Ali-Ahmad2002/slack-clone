@@ -1,13 +1,21 @@
 .mainContainer {
     width: 550px;
-    color: white;
     position: relative;
     height: 100vh;
     h3 {
         position: absolute;
         top: 6px;
         right: 90px;
+        background-color: #fbb03c;
+        border: none;
+        border-radius: 4px;
+        padding: 5px 10px;
+        font-size: 24px;
         cursor: pointer;
+        transition: all 75ms ease-in-out;
+        &:hover {
+            background-color: #fcc571;
+        }
     }
 }
 
@@ -34,13 +42,18 @@
     width: 100%;
     button {
         padding: 8px 50px;
+        background-color: #fbb03c;
+        border-radius: 4px;
+        border: none;
         cursor: pointer;
     }
 }
 
 textarea {
-    background-color: #22272e;
-    color: white;
+    background-color: gainsboro;
+    border-radius: 7px;
+    padding: 2px;
+    background-color: gainsboro;
     width: calc(100% - 85px);
 }
 

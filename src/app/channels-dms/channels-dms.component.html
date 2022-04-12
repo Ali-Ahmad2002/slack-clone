@@ -9,11 +9,15 @@
                 <a [routerLink]="'/chats/' + chat.id"> #{{ chat.name }} </a>
             </div>
         </div>
+        <div class="outContainer">
+            <button (click)="authService.SignOut()" class="logOut">Log out</button>
+        </div>
 
     </div>
 
-    <div>
+    <!-- <div>
         <router-outlet></router-outlet>
-    </div>
+    </div> -->
+
 
 </div>

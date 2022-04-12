@@ -10,6 +10,7 @@ import { Chat } from 'src/models/chat';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
 import { User } from 'src/models/user';
+import { AuthService } from '../shared/services/auth.service';
 
 @Injectable({
   providedIn: "root",
@@ -30,7 +31,8 @@ export class ChannelsDmsComponent implements OnInit {
     public dialog: MatDialog, 
     public data: DataService, 
     public router: Router, 
-    public firestore: AngularFirestore) {
+    public firestore: AngularFirestore,
+    public authService: AuthService) {
   }
 
   ngOnInit(): void {

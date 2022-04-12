@@ -2,8 +2,7 @@
     width: 15vw;
     height: 100vh;
     border-right: 1px solid white;
-    background-color: #22272e;
-    color: white;
+    background-color: #77529f;
     padding: 0 16px;
     mat-tree {
         background-color: #22272e;
@@ -27,7 +26,16 @@
         font-size: 32px;
     }
     button {
+        background-color: #fbb03c;
+        border: none;
+        border-radius: 4px;
+        padding: 5px 10px;
+        font-size: 24px;
         cursor: pointer;
+        transition: all 75ms ease-in-out;
+        &:hover {
+            background-color: #fcc571;
+        }
     }
 }
 
@@ -39,19 +47,34 @@
 .nameContainer {
     margin-bottom: 32px;
     cursor: pointer;
+    color: black;
     padding: 8px;
     transition: all 75ms ease-in-out;
+    border-radius: 4px;
     a {
         text-decoration: none;
-        color: white;
+        color: black;
         font-size: 16px;
     }
     &:hover {
-        background-color: #00000057;
+        background-color: #ffffff36;
     }
 }
 
 .allChannels {
     height: 800px;
     overflow-y: auto;
+}
+
+.outContainer {
+    display: flex;
+    justify-content: center;
+}
+
+.logOut {
+    background-color: #fbb03c;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    padding: 8px 50px;
 }
