@@ -9,8 +9,8 @@ import { DataService } from '../data.service';
 import { Chat } from 'src/models/chat';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
-import { User } from 'src/models/user';
 import { AuthService } from '../shared/services/auth.service';
+
 
 @Injectable({
   providedIn: "root",
@@ -25,22 +25,28 @@ import { AuthService } from '../shared/services/auth.service';
 
 export class ChannelsDmsComponent implements OnInit {
 
+
   chats!: Chat[];
 
   constructor(
-    public dialog: MatDialog, 
-    public data: DataService, 
-    public router: Router, 
+    public dialog: MatDialog,
+    public data: DataService,
+    public router: Router,
     public firestore: AngularFirestore,
-    public authService: AuthService) {
+    public authService: AuthService,
+    
+  ) {
   }
 
   ngOnInit(): void {
-      this.firestore.collection('chats')
-      .valueChanges({idField: 'id'})
-      .subscribe(chats =>{
-        this.chats = chats.map( chat => new Chat(chat))
+    this.firestore.collection('chats')
+      .valueChanges({ idField: 'id' })
+      .subscribe(chats => {
+        this.chats = chats.map(chat => new Chat(chat))
       })
+
+ 
+      
   }
 
 
@@ -56,8 +62,8 @@ export class ChannelsDmsComponent implements OnInit {
         newChanel.timeStamp = new Date().getTime();
         this.firestore.collection('chats')
           .add(newChanel.toJson())
-          .then((chat:any) => {
-           this.router.navigateByUrl('/chats/' + chat.id)
+          .then((chat: any) => {
+            this.router.navigateByUrl('/chats/' + chat.id)
           });
       }
     });

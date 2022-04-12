@@ -1,4 +1,4 @@
-<div class="test">
+<div class="test" *ngIf="authService.userData as user">
     <div class="main_container">
         <div class="child_container">
             <h2>Channels</h2>
@@ -9,11 +9,31 @@
                 <a [routerLink]="'/chats/' + chat.id"> #{{ chat.name }} </a>
             </div>
         </div>
+
+        <p>Email: <strong>{{user.email}}</strong></p>
+
         <div class="outContainer">
             <button (click)="authService.SignOut()" class="logOut">Log out</button>
         </div>
 
+
+
     </div>
+
+
+
+    <!-- <div class="row">
+        <div class="col-md-12">
+            <div class="media"> -->
+    <!-- <img class="align-self-start mr-5 img-thumbnail rounded-circle" src="{{(user.photoURL) ? user.photoURL : '/assets/dummy-user.png'}}" alt="{{user.displayName}}"> -->
+    <!-- <div class="media-body"> -->
+    <!-- <p>User ID: <strong>{{user.uid}}</strong></p>
+                   
+                    <p>Email Verified: <strong>{{user.emailVerified}}</strong></p> -->
+    <!-- </div>
+            </div>
+        </div> -->
+
 
     <!-- <div>
         <router-outlet></router-outlet>
