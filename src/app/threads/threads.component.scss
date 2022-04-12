@@ -2,6 +2,7 @@
     width: 550px;
     position: relative;
     height: 100vh;
+    color: white;
     h3 {
         position: absolute;
         top: 6px;
@@ -12,6 +13,7 @@
         padding: 5px 10px;
         font-size: 24px;
         cursor: pointer;
+        color: #000;
         transition: all 75ms ease-in-out;
         &:hover {
             background-color: #fcc571;

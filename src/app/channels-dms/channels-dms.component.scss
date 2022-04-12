@@ -24,6 +24,7 @@
     h2 {
         margin: 0;
         font-size: 32px;
+        color: white;
     }
     button {
         background-color: #fbb03c;
@@ -53,7 +54,7 @@
     border-radius: 4px;
     a {
         text-decoration: none;
-        color: black;
+        color: white;
         font-size: 16px;
     }
     &:hover {
@@ -62,7 +63,7 @@
 }
 
 .allChannels {
-    height: 800px;
+   height: 800px;
     overflow-y: auto;
 }
 
@@ -72,9 +73,10 @@
 }
 
 .logOut {
-    background-color: #fbb03c;
     border-radius: 4px;
     border: none;
     cursor: pointer;
     padding: 8px 50px;
+    background-color: #ba0000b8;
+    color: white;
 }
