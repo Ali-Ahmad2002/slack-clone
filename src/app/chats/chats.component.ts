@@ -6,6 +6,7 @@ import { Chat } from 'src/models/chat';
 import { Message } from 'src/models/message';
 import { User } from 'src/models/user';
 import { DataService } from '../data.service';
+import { AuthService } from '../shared/services/auth.service';
 
 
 
@@ -38,9 +39,11 @@ export class ChatsComponent implements OnInit {
     public data: DataService,
     public firestore: AngularFirestore,
     public router2: Router,
+    public authService: AuthService
   ) { }
 
   ngOnInit(): void {
+    console.log('auth', this.authService)
 
    this.data.isLoggedIn = true;
     // ID holen
@@ -73,7 +76,7 @@ export class ChatsComponent implements OnInit {
     const newMessage = new Message();
     newMessage.chatId = this.chatId;
     newMessage.text = this.message;
-    newMessage.author = this.author;
+    newMessage.author = this.authService.userData.multiFactor.user.email;
     newMessage.userImg = this.userImg;
     newMessage.timeStamp = new Date().getTime();
 
