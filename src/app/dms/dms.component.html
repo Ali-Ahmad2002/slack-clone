@@ -1,17 +1,12 @@
 <div class="allChannels" *ngIf="authService.userData as user">
     <div class="nameContainer" *ngFor="let us of test; let i= index">
 
-        <button (click)="showDms(us)">Send</button> #{{ us.email }} ////
-
-
-
-
-
-
+        <!-- <button>Send</button> #{{ us.email }} //// -->
+        <a (click)="showDms(us)" [routerLink]="'/chats/' + us.uid"> #{{ us.email }} </a>
     </div>
 
 
-    <div *ngIf="user.uid == 'xsY3NScd3ZeEnmTm9P46VbXYCgO2'">
+    <div *ngIf="user.email || user.uid ==  this.authService.userData.multiFactor.user.email || this.authService.userData.multiFactor.user.uid">
 
         <h2>User ID: <strong>{{user.uid}}</strong></h2>
 
