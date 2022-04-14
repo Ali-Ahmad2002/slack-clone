@@ -1,0 +1,23 @@
+<div class="allChannels" *ngIf="authService.userData as user">
+    <div class="nameContainer" *ngFor="let us of test; let i= index">
+
+        <button (click)="showDms(us)">Send</button> #{{ us.email }} ////
+
+
+
+
+
+
+    </div>
+
+
+    <div *ngIf="user.uid == 'xsY3NScd3ZeEnmTm9P46VbXYCgO2'">
+
+        <h2>User ID: <strong>{{user.uid}}</strong></h2>
+
+        <h2>User ID: <strong>{{user.email}}</strong></h2>
+    </div>
+
+
+
+</div>

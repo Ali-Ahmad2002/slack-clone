@@ -45,7 +45,7 @@ export class ChatsComponent implements OnInit {
   ngOnInit(): void {
     console.log('auth', this.authService)
 
-  console.log('emilaUserauto', this.authService.userData.multiFactor.user.uid);
+ // console.log('emilaUserauto', this.authService.userData.multiFactor.user.uid);
     
 
    this.data.isLoggedIn = true;
@@ -76,17 +76,18 @@ export class ChatsComponent implements OnInit {
 
 
   showtext() {
-    const newMessage = new Message();
-    newMessage.chatId = this.chatId;
-    newMessage.text = this.message;
-    newMessage.author = this.authService.userData.multiFactor.user.email;
-    newMessage.userImg = this.userImg;
-    newMessage.timeStamp = new Date().getTime();
-    newMessage.id = this.authService.userData.multiFactor.user.uid;
-
-    this.message = ''
-    this.firestore.collection('messages')
-      .add(newMessage.toJson())
-  }
+      const newMessage = new Message();
+      newMessage.chatId = this.chatId;
+      newMessage.text = this.message;
+      newMessage.author = this.authService.userData.multiFactor.user.email;
+      newMessage.userImg = this.userImg;
+      newMessage.timeStamp = new Date().getTime();
+     newMessage.id = this.authService.userData.multiFactor.user.uid;  
+      this.message = ''
+      this.firestore.collection('messages')
+        .add(newMessage.toJson())
+    
+    }
+   
 
 }

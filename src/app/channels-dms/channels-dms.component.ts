@@ -8,8 +8,9 @@ import { AddChannelOverlayComponent } from '../add-channel-overlay/add-channel-o
 import { DataService } from '../data.service';
 import { Chat } from 'src/models/chat';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../shared/services/auth.service';
+import { Message } from 'src/models/message';
 
 
 @Injectable({
@@ -25,8 +26,10 @@ import { AuthService } from '../shared/services/auth.service';
 
 export class ChannelsDmsComponent implements OnInit {
 
+
   users: any = []
   chats!: Chat[];
+
 
   constructor(
     public dialog: MatDialog,
@@ -43,13 +46,11 @@ export class ChannelsDmsComponent implements OnInit {
       })
 
 
-    this.firestore.collection('users')
-      .valueChanges({ idField: 'id' })
-      .subscribe(users => {
-        this.users = users;
-        console.log('chatneuekacke', users)
-      })
-  }
+      
+      
+    
+    }
+  
 
   openDialog(): void {
     const dialogRef = this.dialog.open(AddChannelOverlayComponent);
@@ -69,9 +70,7 @@ export class ChannelsDmsComponent implements OnInit {
     });
   }
 
-  activeDm() {
-    this.data.dmsActive = true;
-  }
+ 
 
   reactiveDm() {
     this.data.dmsActive = false;

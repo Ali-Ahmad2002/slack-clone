@@ -28,6 +28,7 @@ import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { DmsComponent } from './dms/dms.component';
  
 
 
@@ -45,6 +46,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     ForgotPasswordComponent,
     VerifyEmailComponent,
     DashboardComponent,
+    DmsComponent,
   ],
   imports: [
     BrowserModule,
