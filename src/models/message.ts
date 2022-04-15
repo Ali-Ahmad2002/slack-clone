@@ -1,10 +1,10 @@
 export class Message {
     public author: string = '';
     public text: string = '';
-    public chatId: string  = '';
-    public timeStamp: number  = 0; 
-    public id: string  = ''; //User ID From FIRESTORE COLLECTION USERS
-    public userImg:string = '';
+    public chatId: string = '';
+    public timeStamp: number = 0;
+    public id: string = ''; //User ID From FIRESTORE COLLECTION USERS
+    public userImg: string = '';
 
 
     constructor(obj?: any) {
@@ -16,6 +16,10 @@ export class Message {
         this.userImg = obj ? obj.userImg : '';
     }
 
+    public getUsers() {
+        return [this.author, this.chatId];
+    }
+
 
     public toJson() {
         return {
@@ -25,7 +29,7 @@ export class Message {
             timeStamp: this.timeStamp,
             id: this.id,
             userImg: this.userImg
-            
+
         };
     }
 

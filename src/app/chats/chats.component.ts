@@ -68,7 +68,14 @@ export class ChatsComponent implements OnInit {
         .collection('messages', ref => ref.where('chatId', '==', this.chatId))
         .valueChanges({ idField: 'id' })
         .subscribe((messages: any) => {
+          console.log('Received message update: ', messages);
           this.messages = messages.map((message: any) => new Message(message))
+
+          this.messages =this.messages.filter( m => {
+            let users = m.getUsers();
+            return users.includes(this.chatId) || users.includes(this.authService.userData.multiFactor.user.email);
+          }
+            );
         })
     });
   }
@@ -82,6 +89,7 @@ export class ChatsComponent implements OnInit {
       newMessage.author = this.authService.userData.multiFactor.user.email;
       newMessage.userImg = this.userImg;
       newMessage.timeStamp = new Date().getTime();
+
      newMessage.id = this.authService.userData.multiFactor.user.uid;  
       this.message = ''
       this.firestore.collection('messages')
