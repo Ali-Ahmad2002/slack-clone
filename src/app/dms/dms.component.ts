@@ -29,7 +29,7 @@ export class DmsComponent implements OnInit {
   ngOnInit(): void {
 
     this.firestore
-    
+
       .collection('users')
       .valueChanges()
       .subscribe((users: any) => {
@@ -43,14 +43,14 @@ export class DmsComponent implements OnInit {
 
   showDms(us: any) {
     console.log('Halo DMS', us);
-
+    this.data.dmsActive = true;
     this.userTest = us;
     this.firestore
       .collection('messages', ref => ref.where('chatId', '==', this.userTest.uid))
       .valueChanges()
       .subscribe((users: any) => {
-       // this.user = users.map((users: any) => new User(users))
-        console.log('user1234',users)
+        // this.user = users.map((users: any) => new User(users))
+        console.log('user1234', users)
       });
 
     // this.userTest = us;
@@ -58,12 +58,12 @@ export class DmsComponent implements OnInit {
     //   .collection('dms')
     //   .valueChanges({ idField: 'id' })
     //   .subscribe((us: any) => {
-        //  this.myDMS = us.filter( m => m.users.contains(MEINE_USER_ID))
-        //this.user = users.map((users: any) => new User(users))
-      //   console.log('user2', us)
-      //   this.test = us
+    //  this.myDMS = us.filter( m => m.users.contains(MEINE_USER_ID))
+    //this.user = users.map((users: any) => new User(users))
+    //   console.log('user2', us)
+    //   this.test = us
 
-      // });
+    // });
 
 
 
@@ -75,7 +75,7 @@ export class DmsComponent implements OnInit {
     newThreadMsg.id = this.authService.userData.multiFactor.user.uid;
     newThreadMsg.uid = this.userTest.uid;
     newThreadMsg.email = this.userTest.email;
-    newThreadMsg.text =  'Halo ALi'
+    newThreadMsg.text = 'Halo ALi'
 
 
     this.firestore.collection('dms')
