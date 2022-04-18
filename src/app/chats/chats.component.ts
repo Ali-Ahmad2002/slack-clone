@@ -24,6 +24,7 @@ export class ChatsComponent implements OnInit {
   chatId!: any;
   chat!: Chat;
   messages!: Message[];
+  isdms = false;
 
 
   // Dummy  User
@@ -48,10 +49,16 @@ export class ChatsComponent implements OnInit {
  // console.log('emilaUserauto', this.authService.userData.multiFactor.user.uid);
     
 
+  
+ 
    this.data.isLoggedIn = true;
     // ID holen
     this.router.paramMap.subscribe(paramMap => {
       this.chatId = paramMap.get('id');
+      if(this.chatId == this.authService.userData.multiFactor.user.uid) {
+        this.messages = [];
+        return;
+      }
 
 
       // Chats hollen für Chats
@@ -63,21 +70,54 @@ export class ChatsComponent implements OnInit {
           this.chat = new Chat(chat)
         })
 
-      //  Nachrichten holen
+      // check if id coresponds to a user id
+      console.log(this.chatId)
       this.firestore
-        .collection('messages', ref => ref.where('chatId', '==', this.chatId))
-        .valueChanges({ idField: 'id' })
-        .subscribe((messages: any) => {
-          console.log('Received message update: ', messages);
-          this.messages = messages.map((message: any) => new Message(message))
+      .collection('users', ref => ref.where('uid', '==', this.chatId))
+      .valueChanges()
+      .subscribe((usUid:any) =>{
+      
+        this.isdms = usUid.length > 0;
+        if(!this.isdms) {
+          console.log("not dms!!!")
+         this.firestore
+           .collection('messages', ref => ref.where('chatId', '==', this.chatId))
+           .valueChanges({ idField: 'id' })
+           .subscribe((messages: any) => {
+             console.log('Received message update: ', messages);
+             this.messages = messages.map((message: any) => new Message(message))
+   
+             this.messages =this.messages.filter( m => {
+               return m.chatId == this.chatId || m.author == this.authService.userData.multiFactor.user.email
+             }
+               );
+           })
+         }
+         else {
+           this.firestore
+           .collection('messages')
+           .valueChanges()
+           .subscribe((messages: any) => {
+             console.log('Received message update1: ', messages);
+             messages = messages.filter( (m:any) => {
+              return (m.chatId == this.chatId && m.author == this.authService.userData.multiFactor.user.email)
+              || (m.chatId = this.authService.userData.multiFactor.user.uid && m.id == this.chatId)
+            }
+              );          
+             this.messages = messages.map((message: any) => new Message(message))   
+             
+           })
+   
+         }
+  
+      })
 
-          this.messages =this.messages.filter( m => {
-            let users = m.getUsers();
-            return users.includes(this.chatId) || users.includes(this.authService.userData.multiFactor.user.email);
-          }
-            );
-        })
+      //  Nachrichten holen
+     
+
+
     });
+  
   }
 
 

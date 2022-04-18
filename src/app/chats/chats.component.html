@@ -10,7 +10,7 @@
                         <img class="img " src="{{ userImg }} " alt=" "> {{ message.author }}
                     </div>
                     <p>{{ message.timeStamp | date :'short' }}</p>
-                    <span *ngIf="user.email || user.uid ==  this.authService.userData.multiFactor.user.email || this.authService.userData.multiFactor.user.uid">
+                    <span>
                         {{ message.text }} 
                     </span>
                     <button *ngIf="data.dmsActive==false" class="answerCon" (click)="data.showThreads(message,chat) ">Antworten</button>

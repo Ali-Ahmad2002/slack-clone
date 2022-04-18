@@ -28,8 +28,8 @@ export class DmsComponent implements OnInit {
 
   ngOnInit(): void {
 
-
     this.firestore
+    
       .collection('users')
       .valueChanges()
       .subscribe((users: any) => {
@@ -47,10 +47,10 @@ export class DmsComponent implements OnInit {
     this.userTest = us;
     this.firestore
       .collection('messages', ref => ref.where('chatId', '==', this.userTest.uid))
-      .valueChanges({ idField: 'id' })
+      .valueChanges()
       .subscribe((users: any) => {
        // this.user = users.map((users: any) => new User(users))
-        console.log('user',users)
+        console.log('user1234',users)
       });
 
     // this.userTest = us;
