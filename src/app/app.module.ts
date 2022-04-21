@@ -9,7 +9,7 @@ import {MatFormFieldModule, } from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
-
+import { AngularFireStorageModule, BUCKET   } from '@angular/fire/compat/storage';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -65,8 +65,8 @@ import { DmsComponent } from './dms/dms.component';
     AngularFireModule,
     AngularFirestoreModule,
     FirebaseAppModule,
-    AngularFireAuthModule
- 
+    AngularFireAuthModule,
+    AngularFireStorageModule
 
    
   

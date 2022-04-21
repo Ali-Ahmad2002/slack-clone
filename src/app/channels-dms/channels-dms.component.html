@@ -5,8 +5,8 @@
             <button (click)="openDialog()">+</button>
         </div>
         <div class="allChannels">
-            <div class="nameContainer" *ngFor="let chat of chats; let i = index">
-                <a (click)="reactiveDm()" [routerLink]="'/chats/' + chat.id"> #{{ chat.name }} </a>
+            <div class="nameContainer" *ngFor="let chat of chats; let i = index" [routerLink]="'/chats/' + chat.id">
+                <a (click)="reactiveDm()"> #{{ chat.name }} </a>
             </div>
 
 
