@@ -13,7 +13,7 @@
                     <span>
                         {{ message.text }} 
                       
-                        <img src="{{downloadUrl}}" alt="">
+                        <img src="{{message.file}}" alt="">
                     </span>
                     <button *ngIf="data.dmsActive==false" class="answerCon" (click)="data.showThreads(message,chat) ">Antworten</button>
                 </div>
@@ -22,10 +22,10 @@
 
         <div class="textArea_container" [class.areaWidth]="data.thread==true">
             <textarea placeholder="Write message " id="text " cols="15 " rows="5 " type="text " name="message " [(ngModel)]="message "></textarea>
-            <button (click)="showtext() ">Send</button>
+            <button (click)="showtext()">Send</button>
             <input type="file" (change)="onFileSelected($event)" accept="*.png.jpg">
             <button (click)="upLoadFile()">Upload File</button>
-            <!-- <input type="file" [(ngModel)]="file"> -->
+            <!-- <input type="file"  [(ngModel)]="file"> -->
         </div>
     </div>
 

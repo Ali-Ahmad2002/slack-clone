@@ -30,7 +30,7 @@ export class ChatsComponent implements OnInit {
   messages!: Message[];
   isdms = false;
   file!: any;
-  downloadUrl!:string;
+  downloadUrl!: string;
   fileName !: File;
 
 
@@ -138,7 +138,7 @@ export class ChatsComponent implements OnInit {
     newMessage.author = this.authService.userData.multiFactor.user.email;
     newMessage.userImg = this.userImg;
     newMessage.timeStamp = new Date().getTime();
-    newMessage.file =  this.downloadUrl;
+    newMessage.file = this.downloadUrl;
     newMessage.id = this.authService.userData.multiFactor.user.uid;
     console.log('new msg FILE', newMessage);
     this.message = ''
@@ -150,32 +150,32 @@ export class ChatsComponent implements OnInit {
 
   onFileSelected(event: any) {
     this.fileName = event.target.files[0];
-   // let filePath  = event.target.files[0].name;
-   // let ref = this.strg.ref(filePath);
-   // let task = ref.put(file);
- 
-     // console.log('MY TASK', task);
- }
+    // let filePath  = event.target.files[0].name;
+    // let ref = this.strg.ref(filePath);
+    // let task = ref.put(file);
 
- upLoadFile() {
-   console.log('FILE NAME',this.fileName);
-   const filePath = '/cv_Cagri_Avsar.pdf' + Math.random() + this.fileName.name;
-   const fileRef = this.strg.ref(filePath);
-   const task = this.strg.upload(filePath, this.fileName);
+    // console.log('MY TASK', task);
+  }
 
-   
- // observe percentage changes
- // this.uploadPercent = task.percentageChanges();
- // get notified when the download URL is available
- task.snapshotChanges().pipe(
-     finalize(async () => {
-       this.downloadUrl = await firstValueFrom( fileRef.getDownloadURL() );
-       console.log('thisurls',this.downloadUrl);
+  upLoadFile() {
+    console.log('FILE NAME', this.fileName);
+    const filePath = '/cv_Cagri_Avsar.pdf' + Math.random() + this.fileName.name;
+    const fileRef = this.strg.ref(filePath);
+    const task = this.strg.upload(filePath, this.fileName);
 
-     } )
-  )
- .subscribe()
-}
+
+    // observe percentage changes
+    // this.uploadPercent = task.percentageChanges();
+    // get notified when the download URL is available
+    task.snapshotChanges().pipe(
+      finalize(async () => {
+        this.downloadUrl = await firstValueFrom(fileRef.getDownloadURL());
+        console.log('thisurls', this.downloadUrl);
+
+      })
+    )
+      .subscribe()
+  }
 
 
 
