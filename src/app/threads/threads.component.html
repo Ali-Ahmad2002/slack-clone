@@ -18,6 +18,7 @@
     <div class="allMSGs">
         <div class="writeMSG" *ngFor="let msg of data.threads">
             <p> {{ msg.text }} </p>
+            <img src="{{msg.file}}" alt="">
         </div>
     </div>
 
@@ -26,7 +27,7 @@
     <div class="textArea_container">
         <textarea placeholder="Write message " id="text " cols="15 " rows="5 " type="text " name="message " [(ngModel)]="message"></textarea>
         <button (click)="showThreadMessage()">Send</button>
-        <input type="file">
+        <input type="file" [(ngModel)]="fileVal" (change)="onFileSelected($event)" accept="*.png.jpg">
     </div>
 
 </div>

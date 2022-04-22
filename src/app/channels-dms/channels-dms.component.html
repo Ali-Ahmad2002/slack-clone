@@ -1,8 +1,10 @@
 <div class="test" *ngIf="authService.userData as user">
     <div class="main_container">
         <div class="child_container">
-            <h2>Channels</h2>
-            <button (click)="openDialog()">+</button>
+            <div class="addChannel">
+                <h2>Channels</h2>
+                <button (click)="openDialog()">+</button>
+            </div>
         </div>
         <div class="allChannels">
             <div class="nameContainer" *ngFor="let chat of chats; let i = index" [routerLink]="'/chats/' + chat.id">

@@ -1,8 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
-
-
 import { ActivatedRoute, Router } from '@angular/router';
 import { finalize, firstValueFrom } from 'rxjs';
 import { Chat } from 'src/models/chat';
@@ -10,7 +8,6 @@ import { Message } from 'src/models/message';
 import { User } from 'src/models/user';
 import { DataService } from '../data.service';
 import { AuthService } from '../shared/services/auth.service';
-
 
 
 
@@ -22,7 +19,7 @@ import { AuthService } from '../shared/services/auth.service';
 })
 export class ChatsComponent implements OnInit {
 
-
+  fileVal!: any;
   user = new User();
   message!: any;
   chatId!: any;
@@ -31,16 +28,11 @@ export class ChatsComponent implements OnInit {
   isdms = false;
   file!: any;
   downloadUrl!: string;
-  fileName !: File;
-
+  fileName !: File | undefined;
 
   // Dummy  User
   author: string = 'Sani';
   userImg: string = 'assets/img/profile/1.webp';
-
-
-
-
 
   constructor(
     public router: ActivatedRoute,
@@ -53,12 +45,7 @@ export class ChatsComponent implements OnInit {
 
   ngOnInit(): void {
     console.log('auth', this.authService)
-
     // console.log('emilaUserauto', this.authService.userData.multiFactor.user.uid);
-
-
-
-
     this.data.isLoggedIn = true;
     // ID holen
     this.router.paramMap.subscribe(paramMap => {
@@ -67,8 +54,6 @@ export class ChatsComponent implements OnInit {
         this.messages = [];
         return;
       }
-
-
       // Chats hollen für Chats
       this.firestore
         .collection('chats')
@@ -77,7 +62,6 @@ export class ChatsComponent implements OnInit {
         .subscribe((chat: any) => {
           this.chat = new Chat(chat)
         })
-
       // check if id coresponds to a user id
       console.log(this.chatId)
       this.firestore
@@ -113,57 +97,44 @@ export class ChatsComponent implements OnInit {
                 }
                 );
                 this.messages = messages.map((message: any) => new Message(message))
-
               })
-
           }
-
         })
-
       //  Nachrichten holen
-
-
-
     });
-
   }
-
-
 
   showtext() {
-    console.log('FILE', this.file);
-    const newMessage = new Message();
-    newMessage.chatId = this.chatId;
-    newMessage.text = this.message;
-    newMessage.author = this.authService.userData.multiFactor.user.email;
-    newMessage.userImg = this.userImg;
-    newMessage.timeStamp = new Date().getTime();
-    newMessage.file = this.downloadUrl;
-    newMessage.id = this.authService.userData.multiFactor.user.uid;
-    console.log('new msg FILE', newMessage);
-    this.message = ''
-    this.firestore.collection('messages')
-      .add(newMessage.toJson())
-
+    if(this.fileName)
+      this.upLoadFile();
+    setTimeout(() => {
+      console.log('FILE', this.file);
+      const newMessage = new Message();
+      newMessage.chatId = this.chatId;
+      newMessage.text = this.message;
+      newMessage.author = this.authService.userData.multiFactor.user.email;
+      newMessage.userImg = this.userImg;
+      newMessage.timeStamp = new Date().getTime();
+      newMessage.file = this.downloadUrl || '';
+      newMessage.id = this.authService.userData.multiFactor.user.uid;
+      console.log('new msg FILE', newMessage);
+      this.message = ''
+      this.fileVal = '';
+      this.firestore.collection('messages')
+        .add(newMessage.toJson());
+        this.downloadUrl = "";
+    }, 2000);
   }
-
 
   onFileSelected(event: any) {
     this.fileName = event.target.files[0];
-    // let filePath  = event.target.files[0].name;
-    // let ref = this.strg.ref(filePath);
-    // let task = ref.put(file);
-
-    // console.log('MY TASK', task);
   }
 
   upLoadFile() {
     console.log('FILE NAME', this.fileName);
-    const filePath = '/cv_Cagri_Avsar.pdf' + Math.random() + this.fileName.name;
+    const filePath = '/cv_Cagri_Avsar.pdf' + Math.random() + this.fileName?.name;
     const fileRef = this.strg.ref(filePath);
     const task = this.strg.upload(filePath, this.fileName);
-
-
     // observe percentage changes
     // this.uploadPercent = task.percentageChanges();
     // get notified when the download URL is available
@@ -171,10 +142,10 @@ export class ChatsComponent implements OnInit {
       finalize(async () => {
         this.downloadUrl = await firstValueFrom(fileRef.getDownloadURL());
         console.log('thisurls', this.downloadUrl);
-
+        this.fileName = undefined;
       })
     )
-      .subscribe()
+    .subscribe()
   }
 
 

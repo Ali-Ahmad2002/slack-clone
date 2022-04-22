@@ -5,6 +5,7 @@ export class Threads {
     public timeStamp: number  = 0; 
     public id: string  = ''; //User ID From FIRESTORE COLLECTION USERS
     public userImg:string = '';
+    public file: string = ''
 
 
     constructor(obj?: any) {
@@ -14,6 +15,7 @@ export class Threads {
         this.timeStamp = obj ? obj.timeStamp : 0;
         this.id = obj ? obj.id : '';
         this.userImg = obj ? obj.userImg : '';
+        this.file = obj ? obj.file: '';
     }
 
 
@@ -24,8 +26,8 @@ export class Threads {
             chatId: this.chatId,
             timeStamp: this.timeStamp,
             id: this.id,
-            userImg: this.userImg
-            
+            userImg: this.userImg,
+            file: this.file
         };
     }
 

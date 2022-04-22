@@ -1,3 +1,33 @@
 .displayTable {
     color: black;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    background: linear-gradient(110deg, #77529f 60%, #8f60bb 60%);
+    color: white;
+}
+
+.displayTableCell {
+    padding-top: 100px;
+    text-align: center;
+}
+
+.btnClass {
+    width: 250px;
+    background-color: #fbb03c;
+}
+
+.signInClass {
+    width: 250px;
+    background-color: #fbb03c;
+    padding: 10px;
+    padding-right: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    color: black;
+}
+
+.redirectToLogin {
+    margin-top: 25px;
 }
