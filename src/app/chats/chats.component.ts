@@ -138,7 +138,7 @@ export class ChatsComponent implements OnInit {
     newMessage.author = this.authService.userData.multiFactor.user.email;
     newMessage.userImg = this.userImg;
     newMessage.timeStamp = new Date().getTime();
-    newMessage.file.push(this.fileName);
+    newMessage.file =  this.downloadUrl;
     newMessage.id = this.authService.userData.multiFactor.user.uid;
     console.log('new msg FILE', newMessage);
     this.message = ''

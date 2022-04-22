@@ -1,3 +1,7 @@
+import { url } from "inspector";
+
+
+
 export class Message {
     public author: string = '';
     public text: string = '';
@@ -5,7 +9,7 @@ export class Message {
     public timeStamp: number = 0;
     public id: string = ''; //User ID From FIRESTORE COLLECTION USERS
     public userImg: string = '';
-    public file: File[] = [];
+    public file: string = ''
 
 
     constructor(obj?: any) {
@@ -15,7 +19,8 @@ export class Message {
         this.timeStamp = obj ? obj.timeStamp : 0;
         this.id = obj ? obj.id : '';
         this.userImg = obj ? obj.userImg : '';
-        this.file = obj ? obj.file : '';
+        this.file = obj ? obj.file: '';
+       
     }
 
     public getUsers() {
@@ -32,6 +37,7 @@ export class Message {
             id: this.id,
             userImg: this.userImg,
             file: this.file
+            
         };
     }
 

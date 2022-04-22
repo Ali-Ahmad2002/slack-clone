@@ -12,7 +12,8 @@
                     <p>{{ message.timeStamp | date :'short' }}</p>
                     <span>
                         {{ message.text }} 
-                        <a href="{{downloadUrl}}">{{fileName.name}}</a>
+                      
+                        <img src="{{downloadUrl}}" alt="">
                     </span>
                     <button *ngIf="data.dmsActive==false" class="answerCon" (click)="data.showThreads(message,chat) ">Antworten</button>
                 </div>
