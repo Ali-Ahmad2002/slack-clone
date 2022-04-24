@@ -9,13 +9,10 @@ import { User } from 'src/models/user';
 import { DataService } from '../data.service';
 import { AuthService } from '../shared/services/auth.service';
 
-
-
 @Component({
   selector: 'app-chats',
   templateUrl: './chats.component.html',
   styleUrls: ['./chats.component.scss'],
-
 })
 export class ChatsComponent implements OnInit {
 
@@ -148,6 +145,10 @@ export class ChatsComponent implements OnInit {
     .subscribe()
   }
 
+
+  goback(){
+    this.data.chanelsKacklacke = false;
+  }
 
 
 }

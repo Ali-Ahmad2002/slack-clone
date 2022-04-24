@@ -20,3 +20,12 @@ body {
 .mat-dialog-container {
     padding: unset !important;
 }
+
+.space {
+    display: flex;
+    justify-content: space-between;
+}
+
+.d_none {
+    display: none;
+}

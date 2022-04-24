@@ -1,7 +1,7 @@
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { SelectionModel } from '@angular/cdk/collections';
 import { FlatTreeControl } from '@angular/cdk/tree';
-import { Component, Injectable, Input, OnInit } from '@angular/core';
+import { Component, Injectable, Input, OnInit, ViewChild } from '@angular/core';
 import { MatTreeFlatDataSource, MatTreeFlattener } from '@angular/material/tree';
 import { BehaviorSubject } from 'rxjs';
 import { AddChannelOverlayComponent } from '../add-channel-overlay/add-channel-overlay.component';
@@ -29,7 +29,7 @@ export class ChannelsDmsComponent implements OnInit {
 
   users: any = []
   chats!: Chat[];
-
+  
 
   constructor(
     public dialog: MatDialog,
@@ -44,13 +44,7 @@ export class ChannelsDmsComponent implements OnInit {
       .subscribe(chats => {
         this.chats = chats.map(chat => new Chat(chat))
       })
-
-
-      
-      
-    
-    }
-  
+  }
 
   openDialog(): void {
     const dialogRef = this.dialog.open(AddChannelOverlayComponent);
@@ -70,10 +64,9 @@ export class ChannelsDmsComponent implements OnInit {
     });
   }
 
- 
-
   reactiveDm() {
     this.data.dmsActive = false;
+    this.data.chanelsKacklacke =true;
   }
 
 

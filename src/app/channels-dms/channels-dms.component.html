@@ -1,22 +1,20 @@
-<div class="test" *ngIf="authService.userData as user">
-    <div class="main_container">
+<div class="space" *ngIf="authService.userData as user">
+    <div class="main_container" [class.d_none]="data.chanelsKacklacke">
         <div class="child_container">
             <div class="addChannel">
                 <h2>Channels</h2>
                 <button (click)="openDialog()">+</button>
             </div>
         </div>
+
         <div class="allChannels">
             <div class="nameContainer" *ngFor="let chat of chats; let i = index" [routerLink]="'/chats/' + chat.id">
                 <a (click)="reactiveDm()"> #{{ chat.name }} </a>
             </div>
-
-
         </div>
 
         <div class="child_container">
             <h2>DMs</h2>
-
             <app-dms></app-dms>
         </div>
 

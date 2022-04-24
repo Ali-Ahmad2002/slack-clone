@@ -10,6 +10,7 @@ import {MatInputModule} from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import { AngularFireStorageModule, BUCKET   } from '@angular/fire/compat/storage';
+import {MatSidenavModule} from '@angular/material/sidenav';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -66,8 +67,8 @@ import { DmsComponent } from './dms/dms.component';
     AngularFirestoreModule,
     FirebaseAppModule,
     AngularFireAuthModule,
-    AngularFireStorageModule
-
+    AngularFireStorageModule,
+    MatSidenavModule
    
   
   

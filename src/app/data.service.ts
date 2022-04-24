@@ -15,6 +15,8 @@ export class DataService {
   threads!: Threads[];
   isLoggedIn = false;
 
+  chanelsKacklacke = false;
+
   dmsActive: boolean = false;
   
   constructor(public firestore: AngularFirestore) { }

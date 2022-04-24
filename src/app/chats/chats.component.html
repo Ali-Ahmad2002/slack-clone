@@ -25,6 +25,7 @@
             <textarea placeholder="Write message " id="text " cols="15 " rows="5 " type="text " name="message " [(ngModel)]="message "></textarea>
             <button (click)="showtext()">Send</button>
             <input type="file" [(ngModel)]="fileVal" (change)="onFileSelected($event)" accept="*.png.jpg">
+            <button (click)="goback()">Back</button>
             <!-- <button (click)="upLoadFile()">Upload File</button> -->
             <!-- <input type="file"  [(ngModel)]="file"> -->
         </div>
